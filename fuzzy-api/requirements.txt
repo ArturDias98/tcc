@@ -1,0 +1,6 @@
+Flask
+scikit-fuzzy
+numpy
+Matplotlib
+SciPy
+NetworkX
