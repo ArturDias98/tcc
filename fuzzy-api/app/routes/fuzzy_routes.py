@@ -17,3 +17,7 @@ def get_valve_opening():
     
     valve_opening = controller.get_valve_opening(error_value)
     return jsonify({'valve_opening': valve_opening})
+
+@fuzzy_routes.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({'status': 'healthy'}), 200
