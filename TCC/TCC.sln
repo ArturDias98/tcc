@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCC.Core", "TCC.Core\TCC.Core.csproj", "{F30E9F9E-E227-467E-A8D5-C03D76A54467}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "opc", "opc", "{72768D37-151C-4579-96C6-602F3B9FAD39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpcUaClient", "OpcUaClient\OpcUaClient.csproj", "{68962730-2D8B-401C-A4A8-701163E09493}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,12 @@ Global
 		{F30E9F9E-E227-467E-A8D5-C03D76A54467}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F30E9F9E-E227-467E-A8D5-C03D76A54467}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F30E9F9E-E227-467E-A8D5-C03D76A54467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68962730-2D8B-401C-A4A8-701163E09493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68962730-2D8B-401C-A4A8-701163E09493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68962730-2D8B-401C-A4A8-701163E09493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68962730-2D8B-401C-A4A8-701163E09493}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{68962730-2D8B-401C-A4A8-701163E09493} = {72768D37-151C-4579-96C6-602F3B9FAD39}
 	EndGlobalSection
 EndGlobal
