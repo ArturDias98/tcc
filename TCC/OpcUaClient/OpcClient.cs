@@ -67,6 +67,8 @@ internal sealed class OpcClient(ILogger<OpcClient> logger) : IOpcClient
     {
         var parse = "opc.tcp://" + _endPoint;
 
+        logger.LogInformation("Connecting to {parse}", parse);
+        
         var selectedEndpoint = CoreClientUtils.SelectEndpoint(
             _applicationConfiguration,
             parse,
@@ -157,7 +159,9 @@ internal sealed class OpcClient(ILogger<OpcClient> logger) : IOpcClient
         var root = AppDomain.CurrentDomain.BaseDirectory;
         var name = application.ConfigSectionName + ".Config.xml";
         var file = Path.Combine(root, name);
-
+        
+        logger.LogInformation("Configuring application with file {file}", file);
+        
         _applicationConfiguration = await application.LoadApplicationConfiguration(file, false);
 
         if (await application.CheckApplicationInstanceCertificates(false))

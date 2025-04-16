@@ -6,6 +6,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "opc", "opc", "{72768D37-151
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpcUaClient", "OpcUaClient\OpcUaClient.csproj", "{68962730-2D8B-401C-A4A8-701163E09493}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpcUaClient.Console", "OpcUaClient.Console\OpcUaClient.Console.csproj", "{8815273F-D1BA-4F66-92DB-323990440557}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +22,13 @@ Global
 		{68962730-2D8B-401C-A4A8-701163E09493}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68962730-2D8B-401C-A4A8-701163E09493}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68962730-2D8B-401C-A4A8-701163E09493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8815273F-D1BA-4F66-92DB-323990440557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8815273F-D1BA-4F66-92DB-323990440557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8815273F-D1BA-4F66-92DB-323990440557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8815273F-D1BA-4F66-92DB-323990440557}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{68962730-2D8B-401C-A4A8-701163E09493} = {72768D37-151C-4579-96C6-602F3B9FAD39}
+		{8815273F-D1BA-4F66-92DB-323990440557} = {72768D37-151C-4579-96C6-602F3B9FAD39}
 	EndGlobalSection
 EndGlobal
