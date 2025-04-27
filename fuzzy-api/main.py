@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from app.routes.fuzzy_routes import fuzzy_routes
 
@@ -11,4 +12,6 @@ def register_routes(app):
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(debug=True)
+    debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    port = int(os.getenv('FLASK_PORT', 40123))
+    app.run(debug=True, port=40123)
