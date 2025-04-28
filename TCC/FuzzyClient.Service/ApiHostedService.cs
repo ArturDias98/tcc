@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using System.Net.Http.Json;
+using FuzzyClient.Service.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -7,6 +7,7 @@ using Microsoft.Extensions.Options;
 namespace FuzzyClient.Service;
 
 internal sealed class ApiHostedService(
+    IApiService apiService,
     ILogger<ApiHostedService> logger,
     IOptions<ApiSettings> options) : IHostedService
 {
@@ -34,39 +35,25 @@ internal sealed class ApiHostedService(
         return new Process { StartInfo = startInfo };
     }
 
-    private async Task<bool> IsApiRunning(CancellationToken token)
-    {
-        logger.LogInformation("Checking if fuzzy-api is running...");
-
-        try
-        {
-            using var client = new HttpClient();
-
-            var response = await client.GetFromJsonAsync<Dictionary<string, string>>(
-                $"http://localhost:{Settings.Port}/api/health",
-                token);
-
-            return response?["status"] == "healthy";
-        }
-        catch (Exception e)
-        {
-            logger.LogError("Error on checking fuzzy-api: {Message}", e.Message);
-
-            return false;
-        }
-    }
-
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         try
         {
-            if (await IsApiRunning(cancellationToken))
+            if (await apiService.IsHealthAsync(cancellationToken))
             {
                 return;
             }
 
             _apiProcess = CreateProcess();
-            var success = _apiProcess.Start();
+            
+            if (_apiProcess.Start())
+            {
+                logger.LogInformation("fuzzy-api started.");
+            }
+            else
+            {
+                logger.LogError("fuzzy-api failed to start.");
+            }
         }
         catch (Exception e)
         {
@@ -91,6 +78,9 @@ internal sealed class ApiHostedService(
         catch (Exception e)
         {
             logger.LogError("Error on stopping fuzzy-api: {Message}", e.Message);
+            return;
         }
+        
+        logger.LogInformation("fuzzy-api stoped.");
     }
 }
