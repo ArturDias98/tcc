@@ -57,6 +57,11 @@ To get the valve opening based on an error value, send a POST request to the `/v
 }
 ```
 
+## Publish Api
+
+- pip install pyinstaller
+- pyinstaller --onefile main.py
+
 The response will include the calculated valve opening based on the fuzzy logic rules defined in the application.
 
 ## License

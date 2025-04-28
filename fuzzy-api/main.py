@@ -14,4 +14,4 @@ if __name__ == '__main__':
     app = create_app()
     debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
     port = int(os.getenv('FLASK_PORT', 40123))
-    app.run(debug=True, port=40123)
+    app.run(debug=debug_mode, port=port)

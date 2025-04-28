@@ -43,7 +43,7 @@ internal sealed class ApiHostedService(
             using var client = new HttpClient();
 
             var response = await client.GetFromJsonAsync<Dictionary<string, string>>(
-                $"http://localhost:{Settings.Port}/api/v1/health",
+                $"http://localhost:{Settings.Port}/api/health",
                 token);
 
             return response?["status"] == "healthy";
