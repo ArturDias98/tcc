@@ -7,10 +7,10 @@ public static class DependencyInjection
     public static IServiceCollection AddApiServices(this IServiceCollection services)
     {
         return services
-            .ConfigureOptions(new ApiSettings()
+            .Configure<ApiSettings>(opt =>
             {
-                Port = 50123,
-                DebugMode = false
+                opt.Port = 50123;
+                opt.DebugMode = false;
             })
             .AddHostedService<ApiHostedService>();
     }

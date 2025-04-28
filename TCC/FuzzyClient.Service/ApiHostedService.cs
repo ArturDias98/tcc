@@ -66,7 +66,7 @@ internal sealed class ApiHostedService(
             }
 
             _apiProcess = CreateProcess();
-            _apiProcess.Start();
+            var success = _apiProcess.Start();
         }
         catch (Exception e)
         {
