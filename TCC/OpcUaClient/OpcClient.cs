@@ -44,7 +44,7 @@ internal sealed class OpcClient(ILogger<OpcClient> logger) : IOpcClient
 
         _session = _reconnectHandler?.Session as Session ?? throw new Exception("Invalid reconnect handler session");
         IsConnected = true;
-        _reconnectHandler.Dispose();
+        _reconnectHandler?.Dispose();
         _reconnectHandler = null;
 
         OnConnectionChanged?.Invoke(this, IsConnected);
