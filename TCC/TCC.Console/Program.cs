@@ -1,4 +1,5 @@
 ﻿using FuzzyClient.Service;
+using FuzzyClient.Service.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,24 +23,48 @@ var host = new HostBuilder()
     })
     .Build();
 
+var apiService = host.Services.GetRequiredService<IApiService>();
+
 var config = host.Services.GetRequiredService<IConfiguration>();
 
 var opcSettings = new OpcSettings();
 config.Bind("OpcSettings", opcSettings);
 
-var service = host.Services.GetRequiredService<IOpcClient>();
-await service.ConfigureAsync(opcSettings.Server);
-await service.StartAsync();
+var opcClient = host.Services.GetRequiredService<IOpcClient>();
+await opcClient.ConfigureAsync(opcSettings.Server);
+await opcClient.StartAsync();
 
-service.AddMonitoredItems([
-    opcSettings.InputTag, 
+opcClient.AddMonitoredItems([
+    opcSettings.InputTag,
     opcSettings.OutputTag,
     opcSettings.SetpointTag
 ]);
 
-service.OnValueChanged += (_, args) =>
+var opcDictionary = new Dictionary<string, double>
+{
+    { opcSettings.InputTag, 0 },
+    { opcSettings.OutputTag, 0 },
+    { opcSettings.SetpointTag, 0 }
+};
+
+opcClient.OnValueChanged += (_, args) =>
 {
     Console.WriteLine($"Tag: {args.NodeId}, Value: {args.Value}");
+    if (double.TryParse(args.Value.ToString(), out var value))
+    {
+        opcDictionary[args.NodeId] = value;
+    }
+
+    var error = opcDictionary[opcSettings.SetpointTag] - opcDictionary[opcSettings.OutputTag];
+    
+    if (error < 0)
+        error = 0;
+    if (error > 100)
+        error = 100;
+
+    var output = apiService.CalculateAsync(error).Result;
+    Console.WriteLine($"Write output {output}");
+    opcClient.WriteAsync(opcSettings.OutputTag, output).Wait();
 };
 
 await host.RunAsync();
