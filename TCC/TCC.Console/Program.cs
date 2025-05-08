@@ -64,7 +64,7 @@ opcClient.OnValueChanged += (_, args) =>
 
     var output = apiService.CalculateAsync(error).Result;
     Console.WriteLine($"Write output {output}");
-    opcClient.WriteAsync(opcSettings.OutputTag, output).Wait();
+    opcClient.WriteAsync(opcSettings.InputTag, output).Wait();
 };
 
 await host.RunAsync();
