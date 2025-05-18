@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OpcUaClient;
 using TCC.Console;
+using TCC.Core;
 
 var host = new HostBuilder()
     .ConfigureAppConfiguration((context, configureBuilder) =>
@@ -14,8 +15,7 @@ var host = new HostBuilder()
     })
     .ConfigureServices((context, services) =>
     {
-        services.AddOpcUaClient();
-        services.AddApiServices(context.Configuration);
+        services.AddCoreServices(context.Configuration);
         services.AddHostedService<CalculateHostedService>();
     }).ConfigureLogging(cfg => cfg.AddConsole())
     .Build();
