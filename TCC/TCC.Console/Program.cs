@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using OpcUaClient;
 using TCC.Console;
 
@@ -16,7 +17,7 @@ var host = new HostBuilder()
         services.AddOpcUaClient();
         services.AddApiServices(context.Configuration);
         services.AddHostedService<CalculateHostedService>();
-    })
+    }).ConfigureLogging(cfg => cfg.AddConsole())
     .Build();
 
 await host.RunAsync();
