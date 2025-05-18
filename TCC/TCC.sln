@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCC.Core", "TCC.Core\TCC.Core.csproj", "{F30E9F9E-E227-467E-A8D5-C03D76A54467}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "opc", "opc", "{72768D37-151C-4579-96C6-602F3B9FAD39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpcUaClient", "OpcUaClient\OpcUaClient.csproj", "{68962730-2D8B-401C-A4A8-701163E09493}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpcUaClient.Console", "OpcUaClient.Console\OpcUaClient.Console.csproj", "{8815273F-D1BA-4F66-92DB-323990440557}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FuzzyClient", "FuzzyClient", "{74F03F7E-5D42-445E-81EC-130676AB1B8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuzzyClient.Service", "FuzzyClient.Service\FuzzyClient.Service.csproj", "{92A27DA5-B4CD-4806-BB87-A49569E84D66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuzzyClient.Console", "FuzzyClient.Console\FuzzyClient.Console.csproj", "{F6F4A3F6-877D-4A36-A860-2079B9CB7949}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCC.Console", "TCC.Console\TCC.Console.csproj", "{64C86B5C-6B70-4D8C-B638-A66421C7E248}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F30E9F9E-E227-467E-A8D5-C03D76A54467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F30E9F9E-E227-467E-A8D5-C03D76A54467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F30E9F9E-E227-467E-A8D5-C03D76A54467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F30E9F9E-E227-467E-A8D5-C03D76A54467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68962730-2D8B-401C-A4A8-701163E09493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68962730-2D8B-401C-A4A8-701163E09493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68962730-2D8B-401C-A4A8-701163E09493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68962730-2D8B-401C-A4A8-701163E09493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8815273F-D1BA-4F66-92DB-323990440557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8815273F-D1BA-4F66-92DB-323990440557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8815273F-D1BA-4F66-92DB-323990440557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8815273F-D1BA-4F66-92DB-323990440557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92A27DA5-B4CD-4806-BB87-A49569E84D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92A27DA5-B4CD-4806-BB87-A49569E84D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92A27DA5-B4CD-4806-BB87-A49569E84D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92A27DA5-B4CD-4806-BB87-A49569E84D66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6F4A3F6-877D-4A36-A860-2079B9CB7949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6F4A3F6-877D-4A36-A860-2079B9CB7949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6F4A3F6-877D-4A36-A860-2079B9CB7949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6F4A3F6-877D-4A36-A860-2079B9CB7949}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64C86B5C-6B70-4D8C-B638-A66421C7E248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C86B5C-6B70-4D8C-B638-A66421C7E248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C86B5C-6B70-4D8C-B638-A66421C7E248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64C86B5C-6B70-4D8C-B638-A66421C7E248}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{68962730-2D8B-401C-A4A8-701163E09493} = {72768D37-151C-4579-96C6-602F3B9FAD39}
+		{8815273F-D1BA-4F66-92DB-323990440557} = {72768D37-151C-4579-96C6-602F3B9FAD39}
+		{92A27DA5-B4CD-4806-BB87-A49569E84D66} = {74F03F7E-5D42-445E-81EC-130676AB1B8D}
+		{F6F4A3F6-877D-4A36-A860-2079B9CB7949} = {74F03F7E-5D42-445E-81EC-130676AB1B8D}
+	EndGlobalSection
+EndGlobal
