@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+
+        <!-- Project Options -->
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>TCC.UI.RazorLib</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <SupportedPlatform Include="browser" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AntDesign" Version="1.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.*" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Shared\NavMenu.razor" />
+    </ItemGroup>
+
+</Project>
