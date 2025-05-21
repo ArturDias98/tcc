@@ -1,6 +1,29 @@
-<Divider Orientation="DividerOrientation.Left">OPC</Divider>
+<div class="d-flex flex-column gap-1">
+    <Title Level="5">OPC</Title>
+    <Divider Orientation="DividerOrientation.Left">Server</Divider>
+    <Input Placeholder="Opc UA server url"
+           @bind-Value="@_settings.OpcModel.Server"></Input>
+    <Divider Orientation="DividerOrientation.Left">Tags</Divider>
+    <Text>Nível</Text>
+    <Input @bind-Value="@_settings.OpcModel.LevelTag"></Input>
+    <Text>Rate</Text>
+    <Input @bind-Value="@_settings.OpcModel.RateTag"></Input>
+    <Text>Saída</Text>
+    <Input @bind-Value="@_settings.OpcModel.OutputTag"></Input>
 
-<Divider Orientation="DividerOrientation.Left">Api</Divider>
-@code {
+    <Divider></Divider>
     
+    <Title Level="5">Api</Title>
+    <Input @bind-Value="@_settings.ApiModel.Endpoint"></Input>
+
+    <Divider></Divider>
+    
+    <Button Type="@ButtonType.Primary"
+            OnClick="SaveAsync"
+            Style="margin-left: auto">Salvar
+    </Button>
+</div>
+
+@code {
+
 }

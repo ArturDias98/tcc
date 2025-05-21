@@ -24,4 +24,8 @@
       <Content Remove="Shared\NavMenu.razor" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\TCC.Shared\TCC.Shared.csproj" />
+    </ItemGroup>
+
 </Project>
