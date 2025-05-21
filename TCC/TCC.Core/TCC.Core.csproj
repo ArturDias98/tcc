@@ -13,6 +13,7 @@
     <ItemGroup>
       <ProjectReference Include="..\FuzzyClient.Service\FuzzyClient.Service.csproj" />
       <ProjectReference Include="..\OpcUaClient\OpcUaClient.csproj" />
+      <ProjectReference Include="..\TCC.Shared\TCC.Shared.csproj" />
     </ItemGroup>
 
 </Project>

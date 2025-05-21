@@ -1,8 +1,6 @@
 using System.Net.Http.Json;
 using FuzzyClient.Service.Services.Models;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace FuzzyClient.Service.Services;
 

@@ -17,4 +17,8 @@
       <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.5" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\TCC.Shared\TCC.Shared.csproj" />
+    </ItemGroup>
+
 </Project>

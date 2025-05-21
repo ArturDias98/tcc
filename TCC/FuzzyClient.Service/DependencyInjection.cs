@@ -1,21 +1,19 @@
 using FuzzyClient.Service.Services;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TCC.Shared.Services;
 
 namespace FuzzyClient.Service;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddApiServices(
-        this IServiceCollection services,
-        IConfiguration configuration)
+    public static IServiceCollection AddApiServices(this IServiceCollection services)
     {
         services
-            .AddHttpClient<IApiService, ApiService>(client =>
+            .AddHttpClient<IApiService, ApiService>((provider, client) =>
             {
-                var address = configuration.GetConnectionString("Api")
-                    ?? throw new Exception("Could not resolve api endpoint");
-                client.BaseAddress = new Uri(address);
+                var service = provider.GetRequiredService<ISettingsService>();
+                var settings = service.GetSettingsAsync().Result;
+                client.BaseAddress = new Uri(settings.ApiModel.Endpoint);
             });
         return services;
     }

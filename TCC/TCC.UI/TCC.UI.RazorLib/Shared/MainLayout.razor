@@ -5,17 +5,30 @@
 	            Ghost="true">
 		<PageHeaderExtra>
 			<Button Icon="@IconType.Outline.Api"
-			        Type="@ButtonType.Primary"></Button>
+			        Type="@ButtonType.Primary"
+			        OnClick="ToggleSettings">
+			</Button>
+			<Drawer @bind-Visible="_settingsVisible"
+			        Placement="DrawerPlacement.Right"
+			        Title='("Configurações")'>
+				<Settings></Settings>
+			</Drawer>
 		</PageHeaderExtra>
 	</PageHeader>
 	<Content Style="padding: 1.5rem 3.125rem">
 		@Body
 	</Content>
 	<Footer>
-		
+
 	</Footer>
 </Layout>
 
 @code {
+	private bool _settingsVisible;
+
+	private void ToggleSettings()
+	{
+		_settingsVisible = !_settingsVisible;
+	}
 
 }

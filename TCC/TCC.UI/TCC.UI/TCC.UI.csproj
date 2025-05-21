@@ -19,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\TCC.Core\TCC.Core.csproj" />
         <ProjectReference Include="..\TCC.UI.RazorLib\TCC.UI.RazorLib.csproj" />
     </ItemGroup>
 

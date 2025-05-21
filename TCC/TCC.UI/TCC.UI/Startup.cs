@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TCC.Core;
 using TCC.UI.RazorLib;
 
 namespace TCC.UI
@@ -19,7 +20,9 @@ namespace TCC.UI
         private static void WireupServices(IServiceCollection services)
         {
             services.AddWpfBlazorWebView();
-            services.AddUIServices();
+            services
+                .AddCoreServices()
+                .AddUIServices();
 #if DEBUG
             services.AddBlazorWebViewDeveloperTools();
 #endif

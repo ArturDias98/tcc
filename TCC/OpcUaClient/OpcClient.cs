@@ -2,10 +2,11 @@ using Microsoft.Extensions.Logging;
 using Opc.Ua;
 using Opc.Ua.Client;
 using Opc.Ua.Configuration;
+using TCC.Shared.Services;
 
 namespace OpcUaClient;
 
-internal sealed class OpcClient(ILogger<OpcClient> logger) : IOpcClient
+internal sealed class OpcClient(ILogger<OpcClient> logger) : IOpcClient, IOpcStatusService
 {
     private const int ReconnectPeriod = 10;
 

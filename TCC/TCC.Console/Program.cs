@@ -1,9 +1,7 @@
-﻿using FuzzyClient.Service;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OpcUaClient;
 using TCC.Console;
 using TCC.Core;
 
@@ -15,7 +13,7 @@ var host = new HostBuilder()
     })
     .ConfigureServices((context, services) =>
     {
-        services.AddCoreServices(context.Configuration);
+        services.AddCoreServices();
         services.AddHostedService<CalculateHostedService>();
     }).ConfigureLogging(cfg => cfg.AddConsole())
     .Build();

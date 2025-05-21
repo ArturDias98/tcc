@@ -14,4 +14,8 @@
       <PackageReference Include="OPCFoundation.NetStandard.Opc.Ua.Client" Version="1.5.376.213" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\TCC.Shared\TCC.Shared.csproj" />
+    </ItemGroup>
+
 </Project>
