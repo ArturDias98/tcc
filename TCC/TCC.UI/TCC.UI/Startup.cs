@@ -23,7 +23,7 @@ namespace TCC.UI
             services.AddWpfBlazorWebView();
             services
                 .AddCoreServices()
-                .AddUIServices();
+                .AddUiServices();
 #if DEBUG
             services.AddBlazorWebViewDeveloperTools();
 #endif

@@ -2,6 +2,7 @@ using FuzzyClient.Service.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OpcUaClient;
+using TCC.Shared.Models;
 using TCC.Shared.Services;
 
 namespace TCC.Core.HostedServices;
@@ -10,6 +11,7 @@ public class CalculateHostedService(
     IOpcClient opcClient,
     IApiService apiService,
     ISettingsService settingsService,
+    INotificationPublisher publisher,
     ILogger<CalculateHostedService> logger) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -22,11 +24,11 @@ public class CalculateHostedService(
             settings.OpcModel.Server,
             stoppingToken);
         await opcClient.StartAsync(stoppingToken);
-        
+
         var levelTag = settings.OpcModel.LevelTag;
         var outputTag = settings.OpcModel.OutputTag;
         var rateTag = settings.OpcModel.RateTag;
-        
+
         opcClient.AddMonitoredItems([
             levelTag,
             outputTag,
@@ -45,15 +47,25 @@ public class CalculateHostedService(
                     .Select(i => double.TryParse(i.ToString(), out var result) ? result : 0)
                     .ToList();
 
+                var level = parse[0];
+                var rate = parse[1];
+
                 var calculate = await apiService.CalculateAsync(
-                    parse[0],
-                    parse[1],
+                    level,
+                    rate,
                     stoppingToken);
 
-                await opcClient.WriteAsync(
-                    outputTag,
-                    calculate,
-                    stoppingToken);
+                await Task.WhenAll(opcClient.WriteAsync(
+                        outputTag,
+                        calculate,
+                        stoppingToken),
+                    publisher.PublishAsync(
+                        new DataModel(
+                            level,
+                            rate,
+                            calculate,
+                            0),
+                        stoppingToken));
             }
             catch (Exception ex)
             {

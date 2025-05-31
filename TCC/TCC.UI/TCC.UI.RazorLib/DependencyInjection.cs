@@ -1,12 +1,16 @@
 using Microsoft.Extensions.DependencyInjection;
+using TCC.Shared.Services;
+using TCC.UI.RazorLib.Services;
 
 namespace TCC.UI.RazorLib;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddUIServices(this IServiceCollection services)
+    public static IServiceCollection AddUiServices(this IServiceCollection services)
     {
         return services
-            .AddAntDesign();
+            .AddAntDesign()
+            .AddEventAggregator()
+            .AddSingleton<INotificationPublisher, NotificationPublisher>();
     }
 }
