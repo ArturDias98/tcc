@@ -10,6 +10,7 @@ public static class DependencyInjection
     {
         return services
             .AddAntDesign()
+            .AddOxyPlotBlazor()
             .AddEventAggregator()
             .AddSingleton<INotificationPublisher, NotificationPublisher>();
     }

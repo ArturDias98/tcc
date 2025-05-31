@@ -10,14 +10,4 @@ internal sealed class NotificationPublisher(
     {
         return eventAggregator.PublishAsync(message);
     }
-
-    public void Subscribe(object subscriber)
-    {
-        eventAggregator.Subscribe(subscriber);
-    }
-
-    public void Unsubscribe(object subscriber)
-    {
-        eventAggregator.Unsubscribe(subscriber);
-    }
 }
