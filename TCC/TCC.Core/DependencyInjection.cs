@@ -1,6 +1,7 @@
 using FuzzyClient.Service;
 using Microsoft.Extensions.DependencyInjection;
 using OpcUaClient;
+using TCC.Core.HostedServices;
 using TCC.Shared.Services;
 
 namespace TCC.Core;
@@ -12,6 +13,7 @@ public static class DependencyInjection
         return services
             .AddTransient<ISettingsService, SettingsService>()
             .AddOpcUaClient()
-            .AddApiServices();
+            .AddApiServices()
+            .AddHostedService<CalculateHostedService>();
     }
 }

@@ -15,6 +15,7 @@ namespace TCC.UI
                            .ConfigureServices(WireupServices)
                            .Build();
             Services = host.Services;
+            host.Start();
         }
 
         private static void WireupServices(IServiceCollection services)
