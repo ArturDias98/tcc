@@ -4,6 +4,8 @@
     <Input Placeholder="Opc UA server url"
            @bind-Value="@_settings.OpcModel.Server"></Input>
     <Divider Orientation="DividerOrientation.Left">Tags</Divider>
+    <Text>Setpoint</Text>
+    <Input @bind-Value="@_settings.OpcModel.SetpointTag"></Input>
     <Text>Nível</Text>
     <Input @bind-Value="@_settings.OpcModel.LevelTag"></Input>
     <Text>Rate</Text>
