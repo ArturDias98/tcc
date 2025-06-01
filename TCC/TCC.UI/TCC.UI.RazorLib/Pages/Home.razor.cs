@@ -10,6 +10,7 @@ namespace TCC.UI.RazorLib.Pages;
 public partial class Home : IHandle<DataModel>, IDisposable
 {
     private PlotModel _plotModel = new();
+    private double _points;
     
     private void LoadPlotModel()
     {
@@ -24,7 +25,7 @@ public partial class Home : IHandle<DataModel>, IDisposable
         {
             Position = AxisPosition.Bottom,
             Minimum = 0,
-            Maximum = 10,
+            Maximum = 1000,
             TicklineColor = OxyColors.Black,
             IsPanEnabled = false,
             IsZoomEnabled = false,
@@ -34,8 +35,8 @@ public partial class Home : IHandle<DataModel>, IDisposable
         var axisY = new LinearAxis()
         {
             Position = AxisPosition.Left,
-            Minimum = -1,
-            Maximum = 1,
+            Minimum = 0,
+            Maximum = 2,
             TicklineColor = OxyColors.Black,
             IsPanEnabled = false,
             IsZoomEnabled = false,
@@ -44,17 +45,21 @@ public partial class Home : IHandle<DataModel>, IDisposable
 
         _plotModel.Axes.Add(axisX);
         _plotModel.Axes.Add(axisY);
-        _plotModel.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)")
-        {
-            TrackerFormatString = "{0}\n{1}: {2:0.000}\n{3}: {4:0.000}",
-        });
+        _plotModel.Series.Add(new LineSeries());
     }
     
     [Inject] private IEventAggregator EventAggregator { get; set; } = null!;
     
     public Task HandleAsync(DataModel message)
     {
-        return Task.CompletedTask;
+        var series = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
+        var xAxis = _plotModel.Axes[0] as LinearAxis ?? throw new Exception("X Axis is not a LinearAxis");
+        
+        series.Points.Add(new DataPoint(_points++, message.Level));
+        
+        _plotModel.InvalidatePlot(true);
+        
+        return InvokeAsync(StateHasChanged);
     }
 
     protected override void OnAfterRender(bool firstRender)

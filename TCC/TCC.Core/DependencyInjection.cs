@@ -14,6 +14,7 @@ public static class DependencyInjection
             .AddTransient<ISettingsService, SettingsService>()
             .AddOpcUaClient()
             .AddApiServices()
+            .AddSingleton<IMonitoringService, MonitoringService>()
             .AddHostedService<CalculateHostedService>();
     }
 }

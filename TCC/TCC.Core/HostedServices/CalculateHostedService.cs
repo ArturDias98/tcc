@@ -12,6 +12,7 @@ public class CalculateHostedService(
     IApiService apiService,
     ISettingsService settingsService,
     INotificationPublisher publisher,
+    IMonitoringService monitoringService,
     ILogger<CalculateHostedService> logger) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -37,6 +38,12 @@ public class CalculateHostedService(
 
         while (!stoppingToken.IsCancellationRequested)
         {
+            if (!monitoringService.IsMonitoring)
+            {
+                await Task.Delay(500, stoppingToken).ConfigureAwait(false);
+                continue;
+            }
+            
             try
             {
                 var read = await opcClient.ReadAsync(

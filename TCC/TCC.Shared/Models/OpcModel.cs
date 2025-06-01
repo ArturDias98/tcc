@@ -6,4 +6,5 @@ public class OpcModel
     public string LevelTag { get; set; } = string.Empty;
     public string OutputTag { get; set; } = string.Empty;
     public string RateTag { get; set; } = string.Empty;
+    public string SetpointTag { get; set; } = string.Empty;
 }
