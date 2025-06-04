@@ -7,12 +7,17 @@ internal sealed class MonitoringService(
     IOpcClient opcClient,
     ISettingsService settingsService) : IMonitoringService
 {
-    private CancellationTokenSource _cancellationTokenSource = new();
+    private CancellationTokenSource? _cancellationTokenSource;
     
     private bool ValidateMonitoring()
     {
         try
         {
+            if (_cancellationTokenSource is null)
+            {
+                return false;
+            }
+            
             _cancellationTokenSource.Token.ThrowIfCancellationRequested();
             return true;
         }

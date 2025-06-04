@@ -4,10 +4,14 @@
 	<PageHeader Title="IFES"
 	            Ghost="true">
 		<PageHeaderExtra>
-			<Button Icon="@IconType.Outline.Api"
-			        Type="@ButtonType.Primary"
-			        OnClick="ToggleSettings">
-			</Button>
+			<div class="d-flex flex-row gap-1 align-items-center">
+				<Monitoring></Monitoring>
+				<Divider Type="DividerType.Vertical"></Divider>
+				<Button Icon="@IconType.Outline.Api"
+				        Type="@ButtonType.Primary"
+				        OnClick="ToggleSettings">
+				</Button>
+			</div>
 			<Drawer @bind-Visible="_settingsVisible"
 			        Placement="DrawerPlacement.Right"
 			        Title='("Configurações")'

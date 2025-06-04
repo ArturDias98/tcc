@@ -70,8 +70,7 @@ public class CalculateHostedService(
                         new DataModel(
                             level,
                             rate,
-                            calculate,
-                            0),
+                            calculate),
                         stoppingToken));
             }
             catch (Exception ex)

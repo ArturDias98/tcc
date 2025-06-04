@@ -1,6 +1,26 @@
 ﻿@page "/"
 
-<BlazorPlotView Height="70vh"
-                Width="100%"
-                Model="@_plotModel"
-                TrackerEnabled="true"></BlazorPlotView>
+<div class="d-flex flex-row w-100 h-100">
+       <BlazorPlotView Height="70vh"
+                       Width="75%"
+                       Model="@_plotModel"
+                       TrackerEnabled="true"></BlazorPlotView>
+
+       <div class="d-flex flex-column gap-1 w-25">
+              <Divider Orientation="DividerOrientation.Left">Level</Divider>
+              <Input TValue="double"
+                     @bind-Value="_level"
+                     ReadOnly="@true"></Input>
+
+              <Divider Orientation="DividerOrientation.Left">Rate</Divider>
+              <Input TValue="double"
+                     @bind-Value="_rate"
+                     ReadOnly="@true"></Input>
+
+              <Divider Orientation="DividerOrientation.Left">Output</Divider>
+              <Input TValue="double"
+                     @bind-Value="_output"
+                     ReadOnly="@true"></Input>
+       </div>
+
+</div>
