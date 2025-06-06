@@ -15,6 +15,7 @@ public static class DependencyInjection
             .AddOpcUaClient()
             .AddApiServices()
             .AddSingleton<IMonitoringService, MonitoringService>()
+            .AddHostedService<OpcHostedService>()
             .AddHostedService<CalculateHostedService>();
     }
 }

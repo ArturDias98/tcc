@@ -21,29 +21,18 @@ public class CalculateHostedService(
             .GetSettingsAsync(stoppingToken)
             .ConfigureAwait(false);
 
-        await opcClient.ConfigureAsync(
-            settings.OpcModel.Server,
-            stoppingToken);
-        await opcClient.StartAsync(stoppingToken);
-
         var levelTag = settings.OpcModel.LevelTag;
         var outputTag = settings.OpcModel.OutputTag;
         var rateTag = settings.OpcModel.RateTag;
 
-        opcClient.AddMonitoredItems([
-            levelTag,
-            outputTag,
-            rateTag
-        ]);
-
         while (!stoppingToken.IsCancellationRequested)
         {
-            if (!monitoringService.IsMonitoring)
+            if (!opcClient.IsConnected || !monitoringService.IsMonitoring)
             {
                 await Task.Delay(500, stoppingToken).ConfigureAwait(false);
                 continue;
             }
-            
+
             try
             {
                 var read = await opcClient.ReadAsync(
