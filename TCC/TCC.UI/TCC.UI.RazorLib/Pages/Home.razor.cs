@@ -17,11 +17,9 @@ public partial class Home : IHandle<DataModel>, IDisposable
     private double _rate = 0;
     private double _level = 0;
     private double _output = 0;
-    private bool _isMonitoring = false;
 
     private async Task StartMonitoringAsync()
     {
-        _isMonitoring = true;
         await MonitoringService
             .StartMonitoringAsync(_setPoint, _intervalSeconds);
     }

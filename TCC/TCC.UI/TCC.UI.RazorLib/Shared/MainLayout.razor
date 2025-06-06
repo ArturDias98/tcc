@@ -10,7 +10,7 @@
 					<Icon Type="@(OpcStatusService.IsConnected ? IconType.Outline.Check : IconType.Outline.Close)"></Icon>
 					@("Opc")
 					<Divider Type="DividerType.Vertical"></Divider>
-					<Icon Type="@IconType.Outline.Check"></Icon>
+					<Icon Type="@(ApiStatusService.IsConnected ? IconType.Outline.Check : IconType.Outline.Close)"></Icon>
 					@("Api")
 				</div>
 				<Divider Type="DividerType.Vertical"></Divider>
@@ -53,7 +53,13 @@
 		{
 			InvokeAsync(StateHasChanged);
 		};
+		
+		ApiStatusService.OnConnectionChanged += (sender, value) =>
+		{
+			InvokeAsync(StateHasChanged);
+		};
 	}
 
 	[Inject] private IOpcStatusService OpcStatusService { get; set; } = null!;
+	[Inject] private IApiStatusService ApiStatusService { get; set; } = null!;
 }

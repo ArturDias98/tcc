@@ -7,16 +7,18 @@ public partial class Monitoring : ComponentBase
     private MonitoringModel _model = new();
     private bool _isMonitoring = false;
     
-    private async Task StartMonitoring()
+    private Task StartMonitoring()
     {
         _isMonitoring = true;
         StateHasChanged();
+        return Task.CompletedTask;
     }
     
-    private async Task StopMonitoring()
+    private Task StopMonitoring()
     {
         _isMonitoring = false;
         StateHasChanged();
+        return Task.CompletedTask;
     }
 }
 

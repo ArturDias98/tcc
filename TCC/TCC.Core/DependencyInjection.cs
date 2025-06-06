@@ -12,10 +12,12 @@ public static class DependencyInjection
     {
         return services
             .AddTransient<ISettingsService, SettingsService>()
+            .AddSingleton<IApiStatusService, ApiStatusService>()
             .AddOpcUaClient()
             .AddApiServices()
             .AddSingleton<IMonitoringService, MonitoringService>()
             .AddHostedService<OpcHostedService>()
+            .AddHostedService<ApiStatusHostedService>()
             .AddHostedService<CalculateHostedService>();
     }
 }
