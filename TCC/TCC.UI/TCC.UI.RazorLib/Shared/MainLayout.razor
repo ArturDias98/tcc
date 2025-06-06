@@ -1,16 +1,27 @@
-﻿@inherits LayoutComponentBase
+﻿@using TCC.Shared.Services
+@inherits LayoutComponentBase
 
 <Layout Style="height: 100vh; overflow: hidden;">
 	<PageHeader Title="IFES"
 	            Ghost="true">
 		<PageHeaderExtra>
 			<div class="d-flex flex-row gap-1 align-items-center">
+				<div class="d-flex flex-row gap-2 align-items-center">
+					<Icon Type="@(OpcStatusService.IsConnected ? IconType.Outline.Check : IconType.Outline.Close)"></Icon>
+					@("Opc")
+					<Divider Type="DividerType.Vertical"></Divider>
+					<Icon Type="@IconType.Outline.Check"></Icon>
+					@("Api")
+				</div>
+				<Divider Type="DividerType.Vertical"></Divider>
 				<Monitoring></Monitoring>
 				<Divider Type="DividerType.Vertical"></Divider>
-				<Button Icon="@IconType.Outline.Api"
-				        Type="@ButtonType.Primary"
-				        OnClick="ToggleSettings">
-				</Button>
+				<Tooltip Title="Configurações">
+					<Button Icon="@IconType.Outline.Setting"
+					        Type="@ButtonType.Primary"
+					        OnClick="ToggleSettings">
+					</Button>
+				</Tooltip>
 			</div>
 			<Drawer @bind-Visible="_settingsVisible"
 			        Placement="DrawerPlacement.Right"
@@ -36,4 +47,13 @@
 		_settingsVisible = !_settingsVisible;
 	}
 
+	protected override void OnInitialized()
+	{
+		OpcStatusService.OnConnectionChanged += (sender,value) =>
+		{
+			InvokeAsync(StateHasChanged);
+		};
+	}
+
+	[Inject] private IOpcStatusService OpcStatusService { get; set; } = null!;
 }
