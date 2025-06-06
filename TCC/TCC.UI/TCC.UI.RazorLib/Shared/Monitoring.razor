@@ -1,4 +1,9 @@
 <div class="d-flex flex-row align-items-center gap-1">
+    @if (_isMonitoring)
+    {
+        <Icon Type="@IconType.Outline.Sync" Spin="true"/>
+        @("Monitorando")
+    }
     <Tooltip Title="Setpoint">
         <Input TValue="double"
                Width="60px"
@@ -9,11 +14,11 @@
                Width="60px"
                @bind-Value="_model.IntervalSeconds"></Input>
     </Tooltip>
-    <Button Icon="@IconType.Fill.PlaySquare" 
+    <Button Icon="@IconType.Fill.PlaySquare"
             Type="@ButtonType.Primary"
             Disabled="@_isMonitoring"
             OnClick="StartMonitoring"></Button>
-    <Button Icon="@IconType.Fill.PauseCircle" 
+    <Button Icon="@IconType.Fill.PauseCircle"
             Type="@ButtonType.Primary"
             Danger="true"
             Disabled="@(!_isMonitoring)"

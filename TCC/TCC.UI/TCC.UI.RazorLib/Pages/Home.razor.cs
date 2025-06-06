@@ -30,7 +30,7 @@ public partial class Home : IHandle<DataModel>, IDisposable
     {
         _plotModel = new PlotModel
         {
-            Title = "Fuzzy Plot",
+            Title = "",
             PlotAreaBorderColor = OxyColors.Black,
             TextColor = OxyColors.Black
         };

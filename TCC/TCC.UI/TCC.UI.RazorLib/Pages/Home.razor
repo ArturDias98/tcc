@@ -1,26 +1,27 @@
 ﻿@page "/"
 
-<div class="d-flex flex-row w-100 h-100">
-       <BlazorPlotView Height="70vh"
-                       Width="75%"
-                       Model="@_plotModel"
-                       TrackerEnabled="true"></BlazorPlotView>
+<div class="d-flex flex-column w-100 h-100">
+    <div class="d-flex flex-row gap-1 align-items-center w-100"
+         id="statistics">
+        <Card Style="width: 200px; margin-left: auto">
+            <Statistic Title="Level"
+                       Value="_level"
+                       Precision="2"></Statistic>
+        </Card>
+        <Card Style="width: 200px">
+            <Statistic Title="Rate"
+                       Value="_rate"
+                       Precision="4"></Statistic>
+        </Card>
+        <Card Style="width: 200px; margin-right: auto">
+            <Statistic Title="Output"
+                       Value="_output"
+                       Precision="4"></Statistic>
+        </Card>
+    </div>
 
-       <div class="d-flex flex-column gap-1 w-25">
-              <Divider Orientation="DividerOrientation.Left">Level</Divider>
-              <Input TValue="double"
-                     @bind-Value="_level"
-                     ReadOnly="@true"></Input>
-
-              <Divider Orientation="DividerOrientation.Left">Rate</Divider>
-              <Input TValue="double"
-                     @bind-Value="_rate"
-                     ReadOnly="@true"></Input>
-
-              <Divider Orientation="DividerOrientation.Left">Output</Divider>
-              <Input TValue="double"
-                     @bind-Value="_output"
-                     ReadOnly="@true"></Input>
-       </div>
-
+    <BlazorPlotView Height="100%"
+                    Width="100%"
+                    Model="@_plotModel"
+                    TrackerEnabled="true"></BlazorPlotView>
 </div>
