@@ -1,6 +1,8 @@
 using System.Text;
+using EventAggregator.Blazor;
 using Microsoft.AspNetCore.Components;
 using TCC.Shared.Services;
+using TCC.UI.RazorLib.Events;
 
 namespace TCC.UI.RazorLib.Shared;
 
@@ -33,7 +35,9 @@ public partial class Monitoring : ComponentBase
         }
 
         _cancellationTokenSource = new CancellationTokenSource();
-
+        
+        await EventAggregator.PublishAsync(new ClearPlotEvent(_model.IntervalSeconds));
+        
         await MonitoringService.StartMonitoringAsync(
             _model.Setpoint,
             _model.IntervalSeconds,
@@ -54,6 +58,7 @@ public partial class Monitoring : ComponentBase
     [Inject] private IMonitoringService MonitoringService { get; set; } = null!;
     [Inject] private IApiStatusService ApiStatusService { get; set; } = null!;
     [Inject] private IOpcStatusService OpcStatusService { get; set; } = null!;
+    [Inject] private IEventAggregator EventAggregator { get; set; } = null!;
 
     protected override void OnInitialized()
     {

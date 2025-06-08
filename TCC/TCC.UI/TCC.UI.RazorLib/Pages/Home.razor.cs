@@ -5,25 +5,17 @@ using OxyPlot.Axes;
 using OxyPlot.Series;
 using TCC.Shared.Models;
 using TCC.Shared.Services;
+using TCC.UI.RazorLib.Events;
 
 namespace TCC.UI.RazorLib.Pages;
 
-public partial class Home : IHandle<DataModel>, IDisposable
+public partial class Home : IHandle<DataModel>, IHandle<ClearPlotEvent>, IDisposable
 {
     private PlotModel _plotModel = new();
-    private double _points;
-    private double _setPoint = 0;
-    private int _intervalSeconds = 10;
     private double _rate = 0;
     private double _level = 0;
     private double _output = 0;
-
-    private async Task StartMonitoringAsync()
-    {
-        await MonitoringService
-            .StartMonitoringAsync(_setPoint, _intervalSeconds);
-    }
-
+    
     private void LoadPlotModel()
     {
         _plotModel = new PlotModel
@@ -33,15 +25,14 @@ public partial class Home : IHandle<DataModel>, IDisposable
             TextColor = OxyColors.Black
         };
 
-        var axisX = new LinearAxis()
+        var axisX = new DateTimeAxis 
         {
             Position = AxisPosition.Bottom,
-            Minimum = 0,
-            Maximum = 1000,
+            Minimum = DateTimeAxis.ToDouble(DateTime.Now),
+            Maximum =  DateTimeAxis.ToDouble(DateTime.Now.AddSeconds(10)),
             TicklineColor = OxyColors.Black,
             IsPanEnabled = false,
             IsZoomEnabled = false,
-            StringFormat = "N2"
         };
 
         var axisY = new LinearAxis()
@@ -65,13 +56,34 @@ public partial class Home : IHandle<DataModel>, IDisposable
 
     public Task HandleAsync(DataModel message)
     {
+        _rate = message.Rate;
+        _level = message.Level;
+        _output = message.Output;
+        
         var series = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
-        var xAxis = _plotModel.Axes[0] as LinearAxis ?? throw new Exception("X Axis is not a LinearAxis");
 
-        series.Points.Add(new DataPoint(_points++, message.Level));
+        series.Points.Add(new DataPoint(DateTimeAxis.ToDouble(message.Timestamp), message.Level));
 
         _plotModel.InvalidatePlot(true);
 
+        return InvokeAsync(StateHasChanged);
+    }
+    
+    public Task HandleAsync(ClearPlotEvent message)
+    {
+        _rate = 0;
+        _level = 0;
+        _output = 0;
+        
+        var series = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
+        series.Points.Clear();
+        
+        var xAxis = _plotModel.Axes[0] as DateTimeAxis ?? throw new Exception("X Axis is not a DateTimeAxis");
+        xAxis.Minimum = DateTimeAxis.ToDouble(DateTime.Now);
+        xAxis.Maximum = DateTimeAxis.ToDouble(DateTime.Now.AddSeconds(message.IntervalSeconds));
+        
+        _plotModel.InvalidatePlot(true);
+        
         return InvokeAsync(StateHasChanged);
     }
 
