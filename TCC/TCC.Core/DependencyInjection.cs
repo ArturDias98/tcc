@@ -10,9 +10,11 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddCoreServices(this IServiceCollection services)
     {
+        var apiStatusService = new ApiStatusService();
         return services
             .AddTransient<ISettingsService, SettingsService>()
-            .AddSingleton<IApiStatusService, ApiStatusService>()
+            .AddSingleton(apiStatusService)
+            .AddSingleton<IApiStatusService>(_ => apiStatusService)
             .AddOpcUaClient()
             .AddApiServices()
             .AddSingleton<IMonitoringService, MonitoringService>()
