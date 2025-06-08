@@ -27,7 +27,7 @@ public class CalculateHostedService(
 
         while (!stoppingToken.IsCancellationRequested)
         {
-            if (!opcClient.IsConnected || !monitoringService.IsMonitoring)
+            if (!monitoringService.IsMonitoring)
             {
                 await Task.Delay(500, stoppingToken).ConfigureAwait(false);
                 continue;

@@ -81,6 +81,11 @@ internal sealed class OpcClient(ILogger<OpcClient> logger) : IOpcClient, IOpcSta
         var endpoint = new ConfiguredEndpoint(selectedEndpoint.Server, endpointConfiguration);
         endpoint.Update(selectedEndpoint);
 
+        if (_session != null)
+        {
+            _session.KeepAlive -= Session_KeepAlive;
+        }
+        
         _session = await Session.Create(
             _applicationConfiguration,
             endpoint,

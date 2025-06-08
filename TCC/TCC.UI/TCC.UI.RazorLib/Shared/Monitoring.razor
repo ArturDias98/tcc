@@ -25,6 +25,11 @@
             OnClick="StopMonitoring"></Button>
 </div>
 
+<Modal @bind-Visible="_errorModal"
+       Title="Erro ao iniciar monitoramento">
+    @((MarkupString)_errorMessage)
+</Modal>
+
 @code {
 
 }
