@@ -44,11 +44,13 @@ public partial class Home : IHandle<DataModel>, IHandle<ClearPlotEvent>, IDispos
             IsPanEnabled = false,
             IsZoomEnabled = false,
             StringFormat = "N2",
+            Title = "Level",
         };
 
         _plotModel.Axes.Add(axisX);
         _plotModel.Axes.Add(axisY);
-        _plotModel.Series.Add(new LineSeries());
+        _plotModel.Series.Add(new LineSeries(){Title = "Level", Color = OxyColors.Blue});
+        _plotModel.Series.Add(new LineSeries(){Title = "Setpoint", Color = OxyColors.Red});
     }
 
     [Inject] private IEventAggregator EventAggregator { get; set; } = null!;
@@ -60,9 +62,11 @@ public partial class Home : IHandle<DataModel>, IHandle<ClearPlotEvent>, IDispos
         _level = message.Level;
         _output = message.Output;
         
-        var series = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
+        var levelSeries = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
+        var setpointSeries = _plotModel.Series[1] as LineSeries ?? throw new Exception("Series is not a LineSeries");
 
-        series.Points.Add(new DataPoint(DateTimeAxis.ToDouble(message.Timestamp), message.Level));
+        levelSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(message.Timestamp), message.Level));
+        setpointSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(message.Timestamp), MonitoringService.Setpoint));
 
         _plotModel.InvalidatePlot(true);
 
@@ -75,8 +79,11 @@ public partial class Home : IHandle<DataModel>, IHandle<ClearPlotEvent>, IDispos
         _level = 0;
         _output = 0;
         
-        var series = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
-        series.Points.Clear();
+        var levelSeries = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
+        levelSeries.Points.Clear();
+        
+        var setpointSeries = _plotModel.Series[1] as LineSeries ?? throw new Exception("Series is not a LineSeries");
+        setpointSeries.Points.Clear();
         
         var xAxis = _plotModel.Axes[0] as DateTimeAxis ?? throw new Exception("X Axis is not a DateTimeAxis");
         xAxis.Minimum = DateTimeAxis.ToDouble(DateTime.Now);
