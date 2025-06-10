@@ -13,7 +13,7 @@ public partial class Home : IHandle<DataModel>, IHandle<ClearPlotEvent>, IDispos
 {
     private PlotModel _plotModel = new();
     private double _rate = 0;
-    private double _level = 0;
+    private double _error = 0;
     private double _output = 0;
     
     private void LoadPlotModel()
@@ -59,7 +59,7 @@ public partial class Home : IHandle<DataModel>, IHandle<ClearPlotEvent>, IDispos
     public Task HandleAsync(DataModel message)
     {
         _rate = message.Rate;
-        _level = message.Level;
+        _error = message.Error;
         _output = message.Output;
         
         var levelSeries = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
@@ -76,7 +76,7 @@ public partial class Home : IHandle<DataModel>, IHandle<ClearPlotEvent>, IDispos
     public Task HandleAsync(ClearPlotEvent message)
     {
         _rate = 0;
-        _level = 0;
+        _error = 0;
         _output = 0;
         
         var levelSeries = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");

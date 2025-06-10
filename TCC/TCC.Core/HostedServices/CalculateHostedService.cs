@@ -21,9 +21,10 @@ public class CalculateHostedService(
             .GetSettingsAsync(stoppingToken)
             .ConfigureAwait(false);
 
-        var levelTag = settings.OpcModel.LevelTag;
+        var errorTag = settings.OpcModel.ErrorTag;
         var outputTag = settings.OpcModel.OutputTag;
         var rateTag = settings.OpcModel.RateTag;
+        var levelTag = settings.OpcModel.LevelTag;
 
         while (!stoppingToken.IsCancellationRequested)
         {
@@ -36,18 +37,19 @@ public class CalculateHostedService(
             try
             {
                 var read = await opcClient.ReadAsync(
-                    [levelTag, rateTag],
+                    [errorTag, rateTag, levelTag],
                     stoppingToken);
 
                 var parse = read
                     .Select(i => double.TryParse(i.ToString(), out var result) ? result : 0)
                     .ToList();
 
-                var level = parse[0];
+                var error = parse[0];
                 var rate = parse[1];
+                var level = parse[2];
 
                 var calculate = await apiService.CalculateAsync(
-                    level,
+                    error,
                     rate,
                     stoppingToken);
 
@@ -57,6 +59,7 @@ public class CalculateHostedService(
                         stoppingToken),
                     publisher.PublishAsync(
                         new DataModel(
+                            error,
                             level,
                             rate,
                             calculate,
