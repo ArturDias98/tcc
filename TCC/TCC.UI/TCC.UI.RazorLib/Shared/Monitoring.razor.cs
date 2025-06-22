@@ -60,8 +60,10 @@ public partial class Monitoring : ComponentBase
     [Inject] private IOpcStatusService OpcStatusService { get; set; } = null!;
     [Inject] private IEventAggregator EventAggregator { get; set; } = null!;
 
-    protected override void OnInitialized()
+    protected override void OnAfterRender(bool firstRender)
     {
+        if (!firstRender) return;
+        
         MonitoringService.OnMonitoringChanged += (_, value) =>
         {
             if (_isMonitoring == value)

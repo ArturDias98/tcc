@@ -99,12 +99,8 @@ public partial class Home : IHandle<DataModel>, IHandle<ClearPlotEvent>, IDispos
         if (!firstRender) return;
 
         LoadPlotModel();
-        StateHasChanged();
-    }
-
-    protected override void OnInitialized()
-    {
         EventAggregator.Subscribe(this);
+        StateHasChanged();
     }
 
     public void Dispose()
