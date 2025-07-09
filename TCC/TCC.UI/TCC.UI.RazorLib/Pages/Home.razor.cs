@@ -4,17 +4,23 @@ using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using TCC.Shared.Models;
+using TCC.Shared.Models.Metrics;
 using TCC.Shared.Services;
 using TCC.UI.RazorLib.Events;
 
 namespace TCC.UI.RazorLib.Pages;
 
-public partial class Home : IHandle<DataModel>, IHandle<ClearPlotEvent>, IDisposable
+public partial class Home : IHandle<DataModel>, IHandle<MetricsModel>, IHandle<ClearPlotEvent>, IDisposable
 {
     private PlotModel _plotModel = new();
+    
     private double _rate = 0;
     private double _error = 0;
     private double _output = 0;
+    
+    private double _mse = 0;
+    private double _overshoot = 0;
+    private double _settlingTime = 0;
     
     private void LoadPlotModel()
     {
@@ -73,11 +79,24 @@ public partial class Home : IHandle<DataModel>, IHandle<ClearPlotEvent>, IDispos
         return InvokeAsync(StateHasChanged);
     }
     
+    public Task HandleAsync(MetricsModel message)
+    {
+        _mse = message.Mse;
+        _overshoot = message.Overshoot;
+        _settlingTime = message.SettlingTime;
+        
+        return InvokeAsync(StateHasChanged);
+    }
+    
     public Task HandleAsync(ClearPlotEvent message)
     {
         _rate = 0;
         _error = 0;
         _output = 0;
+        
+        _mse = 0;
+        _overshoot = 0;
+        _settlingTime = 0;
         
         var levelSeries = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
         levelSeries.Points.Clear();

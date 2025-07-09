@@ -19,6 +19,25 @@
                        Precision="4"></Statistic>
         </Card>
     </div>
+    
+    <div class="d-flex flex-row gap-1 align-items-center w-100"
+         id="metrics">
+        <Card Style="width: 200px; margin-left: auto">
+            <Statistic Title="MSE"
+                       Value="_mse"
+                       Precision="4"></Statistic>
+        </Card>
+        <Card Style="width: 200px">
+            <Statistic Title="Overshoot"
+                       Value="_overshoot"
+                       Precision="4"></Statistic>
+        </Card>
+        <Card Style="width: 200px; margin-right: auto">
+            <Statistic Title="Settling Time"
+                       Value="_settlingTime"
+                       Precision="4"></Statistic>
+        </Card>
+    </div>
 
     <BlazorPlotView Height="100%"
                     Width="100%"
