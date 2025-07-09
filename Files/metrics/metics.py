@@ -9,22 +9,14 @@ from IPython.display import display
 
 def compute_metrics(y, t, ref=1.0, tol=0.02):
     mse = np.mean((y - ref) ** 2)
-
     overshoot = np.max(y) - ref
-
     # Determina o tempo de acomodação (entrando e permanecendo dentro da banda de tolerância)
-
     within_tol = np.abs(y - ref) <= tol * ref
-
     settling_time = np.nan
-
     for i in range(len(t)):
-
         if np.all(within_tol[i:]):
             settling_time = t[i]
-
-        break
-
+            break
     return mse, overshoot, settling_time
 
 
@@ -37,10 +29,8 @@ t = data["Time"].values
 y_pi = data["Value"].values
 y_fuzzy = data["Value"].values
 
-for name, y in [("PI", y_pi), ("Fuzzy", y_fuzzy)]:
-
-    mse, overshoot, settling = compute_metrics(y, t, 0.5)
-
+for name, y in [("GA-PID", y_fuzzy), ("Fuzzy-PID", y_fuzzy)]:
+    mse, overshoot, settling = compute_metrics(y, t)
     metrics.append(
         {
             "Modelo": name,
@@ -50,6 +40,5 @@ for name, y in [("PI", y_pi), ("Fuzzy", y_fuzzy)]:
         }
     )
 
-    df_metrics = pd.DataFrame(metrics)
-
-    display(df_metrics)
+df_metrics = pd.DataFrame(metrics)
+display(df_metrics)
