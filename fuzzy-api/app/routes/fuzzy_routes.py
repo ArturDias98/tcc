@@ -37,31 +37,6 @@ def calculate_performance_metrics():
         y = data.get("y")
         t = data.get("t")
 
-        # Validação dos campos obrigatórios
-        if ref is None or tol is None or y is None or t is None:
-            return jsonify({"error": "Fields ref, tol, y, and t are required"}), 400
-
-        # Validação dos tipos
-        if not isinstance(ref, (int, float)) or not isinstance(tol, (int, float)):
-            return jsonify({"error": "ref and tol must be numbers"}), 400
-
-        if not isinstance(y, list) or not isinstance(t, list):
-            return jsonify({"error": "y and t must be lists"}), 400
-
-        # Validação do tamanho das listas
-        if len(y) != len(t):
-            return jsonify({"error": "y and t must have the same length"}), 400
-
-        if len(y) == 0:
-            return jsonify({"error": "y and t cannot be empty"}), 400
-
-        # Validação dos elementos das listas
-        if not all(isinstance(val, (int, float)) for val in y):
-            return jsonify({"error": "All elements in y must be numbers"}), 400
-
-        if not all(isinstance(val, (int, float)) for val in t):
-            return jsonify({"error": "All elements in t must be numbers"}), 400
-
         # Conversão para numpy arrays
         y_array = np.array(y)
         t_array = np.array(t)
