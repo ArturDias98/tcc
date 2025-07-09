@@ -10,12 +10,20 @@ internal class ApiStatusHostedService(
     ApiStatusService apiStatusService,
     ILogger<ApiStatusHostedService> logger) : BackgroundService
 {
+    private bool _isFirstRun = true;
+    
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         while (!stoppingToken.IsCancellationRequested)
         {
             try
             {
+                if (_isFirstRun)
+                {
+                    await Task.Delay(2000, stoppingToken).ConfigureAwait(false);
+                    _isFirstRun = false;
+                }
+                
                 var isHealth = await apiService.IsHealthAsync(stoppingToken);
                 apiStatusService.ChangeConnectionStatus(isHealth);
             }
