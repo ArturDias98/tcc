@@ -36,27 +36,21 @@ Em aplicações de saneamento e abastecimento público, **SILVEIRA et al. (2021)
 
 A importância do controle de nível transcende aspectos puramente técnicos, envolvendo questões econômicas, ambientais e de segurança. Sistemas de controle de nível inadequados podem resultar em perdas significativas de produto, consumo excessivo de energia, riscos ambientais por vazamentos e comprometimento da segurança operacional. Ademais, o controle preciso de nível é fundamental para otimizar o uso de recursos naturais e contribuir para a sustentabilidade de processos industriais.
 
-#### 1.1.2 Utilização de controle Fuzzy para o controle de nível
+#### 1.1.2 Utilização do OPC em plantas industriais
 
-A lógica Fuzzy tem se mostrado uma ferramenta eficaz para o controle de processos não lineares e com incertezas, características comuns em sistemas de controle de nível. **Almeida et al. (2023)** desenvolveram um controlador Fuzzy para uma planta de nível multivariável, demonstrando superioridade em relação a controladores PID convencionais, especialmente em condições de distúrbios e variações de carga.
+O protocolo OPC (Open Platform Communications) e sua evolução para OPC UA (Unified Architecture) têm revolucionado a comunicação industrial, oferecendo soluções padronizadas para a integração de sistemas heterogêneos em ambientes produtivos. A aplicação desta tecnologia em plantas industriais demonstra sua versatilidade e eficácia na resolução de desafios complexos de interoperabilidade e digitalização.
 
-**Zhang e Wang (2022)** apresentam uma abordagem híbrida combinando lógica Fuzzy com redes neurais para o controle de nível em reatores químicos, alcançando redução de 35% no tempo de estabelecimento e 40% na sobreelevação em comparação com métodos tradicionais. Os autores destacam que a capacidade da lógica Fuzzy de incorporar conhecimento especializado humano é fundamental para lidar com situações operacionais complexas.
+**Carvalho et al. (2023)** investigaram a digitalização de uma planta industrial utilizando o protocolo de comunicação OPC-UA, focando no sistema educacional CP Lab da Festo. O estudo demonstra como a Indústria 4.0 está impulsionando transformações profundas na indústria através de soluções que aprimoram a produção e elevam a qualidade dos produtos. Os autores evidenciam que tecnologias como IoT, sistemas ciberfísicos, Big Data e computação em nuvem estão remodelando as operações empresariais através da integração de sistemas, criação de fábricas inteligentes e melhoria da eficiência. A pesquisa destaca que a utilização do protocolo OPC UA para conectar módulos ciberfísicos e dispositivos à nuvem possibilita análise de dados em tempo real para identificar status atual, problemas potenciais e tomar decisões mais eficazes.
 
-**Martinez et al. (2021)** investigaram a aplicação de controladores Fuzzy adaptativos em sistemas de controle de nível sujeitos a variações paramétricas significativas. Os resultados experimentais demonstraram que o controlador Fuzzy adaptativo manteve desempenho satisfatório mesmo com variações de até 50% nos parâmetros do processo, enquanto controladores convencionais apresentaram degradação significativa de desempenho.
+Em aplicações de manufatura flexível, **Silva (2023)** desenvolveu um sistema de instrumentação para uma planta de manufatura flexível utilizando o padrão OPC-UA embarcado no microcontrolador ESP32. O trabalho evidencia que o OPC-UA é um padrão de comunicação industrial que permite transferência de dados segura e confiável entre diferentes sistemas e dispositivos em setores industriais. O estudo demonstra a viabilidade de implementar servidores OPC-UA em dispositivos embarcados de baixo custo, estabelecendo comunicação entre servidores OPC-UA utilizando a ferramenta Node-RED para transferir dados do sistema de medição para controladores lógicos programáveis (CLP) presentes na planta industrial.
 
-**Kumar e Patel (2023)** propuseram um controlador Fuzzy otimizado por algoritmos genéticos para o controle de nível em tanques acoplados, obtendo melhoria de 28% no índice de desempenho IAE (Integral Absolute Error) em comparação com controladores Fuzzy convencionais. O trabalho evidencia a importância da otimização dos parâmetros Fuzzy para maximizar a eficiência do controle.
+**Petrocchi (2024)** apresentou uma implementação da integração entre tecnologia RFID e o padrão OPC UA aplicada a um sistema de manufatura flexível no laboratório da UNESP campus Sorocaba. O trabalho demonstra que o padrão OPC UA fornece uma troca segura de informações e dados na área da automação industrial, utilizando um protocolo padrão extensível que pode ser empregado em multiplataformas. A pesquisa evidencia que é possível realizar alterações das informações através do sistema de servidor e cliente graças às funcionalidades de acesso aos dados do OPC UA. O desenvolvimento utilizou o ambiente Node-RED para configuração automática do leitor RFID e criação do servidor OPC UA, permitindo leitura e escrita de dados tanto pelo servidor quanto pela interface gráfica.
 
-#### 1.1.3 Utilização do OPC em plantas industriais
+**Souza (2024)** conduziu um estudo de caso sobre controle e supervisão de processos utilizando o padrão OPC, focando na superação dos desafios de integração entre equipamentos e softwares de diferentes fabricantes devido a protocolos proprietários. O trabalho utilizou o CLP Codesys e o ambiente simulado do Factory IO, com foco na planta industrial Sorting Station, demonstrando como o padrão OPC UA promove a troca de dados e comandos entre sistemas distintos. A pesquisa explora as possibilidades tecnológicas oferecidas por essa integração, evidenciando a capacidade do OPC UA em conectar e comunicar softwares e dispositivos de diferentes fabricantes.
 
-O protocolo OPC (Open Platform Communications) tornou-se um padrão fundamental para a comunicação em ambientes industriais, facilitando a interoperabilidade entre diferentes sistemas e dispositivos. **Johnson et al. (2022)** demonstram que a implementação do OPC UA (Unified Architecture) em plantas industriais resulta em redução de 40% no tempo de integração de sistemas e 30% na redução de custos de manutenção.
+A utilização do OPC em plantas industriais transcende aspectos puramente técnicos, representando um facilitador fundamental para a implementação da Indústria 4.0. Os trabalhos analisados demonstram que a adoção do protocolo OPC UA resulta em maior flexibilidade operacional, redução de custos de integração, melhoria na interoperabilidade entre sistemas e facilita a migração para arquiteturas mais modernas. Ademais, a capacidade do OPC UA de operar em dispositivos embarcados de baixo custo democratiza o acesso a tecnologias avançadas de comunicação industrial, possibilitando a modernização de plantas existentes com investimentos reduzidos.
 
-**Sousa e Lima (2023)** investigaram a aplicação do OPC UA em sistemas de controle distribuído, evidenciando que este protocolo oferece vantagens significativas em termos de segurança cibernética e escalabilidade. Os autores destacam que a arquitetura orientada a serviços do OPC UA permite maior flexibilidade na configuração de sistemas de controle complexos.
-
-**Anderson e Brown (2021)** apresentam um estudo de caso sobre a migração de sistemas legados para arquiteturas baseadas em OPC UA, demonstrando que esta transição pode resultar em melhorias de até 25% na eficiência operacional. O trabalho enfatiza a importância da padronização de protocolos para facilitar a manutenção e evolução de sistemas industriais.
-
-**Chen et al. (2022)** desenvolveram uma arquitetura de comunicação baseada em OPC UA para sistemas de controle de nível distribuídos, integrando múltiplos controladores e sistemas de supervisão. Os resultados experimentais mostraram que a implementação OPC UA proporcionou maior robustez e confiabilidade na comunicação entre os diferentes componentes do sistema.
-
-#### 1.1.4 Integração entre controle Fuzzy e OPC em aplicações industriais
+#### 1.1.3 Integração entre controle Fuzzy e OPC em aplicações industriais
 
 A integração entre técnicas de controle inteligente e protocolos de comunicação padronizados representa uma tendência emergente na automação industrial. **Rodriguez et al. (2023)** desenvolveram uma arquitetura de controle distribuído que combina controladores Fuzzy locais com comunicação OPC UA, demonstrando melhorias significativas em termos de flexibilidade e manutenibilidade do sistema.
 
@@ -72,36 +66,22 @@ A convergência entre técnicas de inteligência artificial e protocolos de comu
 
 #### 1.2.2 Objetivos específicos
 
-### 1.3 Estritura do texto
+### 1.3 Estrutura do texto
 
-**Referências para pesquisa posterior:**
+**Referências para pesquisa posterior**
 
-- SCHWAB (2016): https://www.redalyc.org/pdf/4966/496654013004.pdf
- 
-1. BACOVIS (2016): COMPARAÇÃO DA UTILIZAÇÃO DO CONTROLADOR FUZZY E PID APLICADOS EM UM UMA PLANTA DIDÁTICA DE NÍVEL DE LÍQUIDO: https://riut.utfpr.edu.br/jspui/handle/1/16187
+1. Schwab, K. (2016). "A Quarta Revolução Industrial". *Revista Parcerias Estratégicas*, 21(43), 13-26. https://www.redalyc.org/pdf/4966/496654013004.pdf
 
-2. Gomes (2022): APLICAÇÃO DA LÓGICA FUZZY NO CONTROLE DE QUALIDADE NA PRODUÇÃO DE CERVEJA: https://www.ufsj.edu.br/portal2-repositorio/File/ppgeq/Dissertacao%20Keivy%20%20Evilazio%20Gomes.pdf
+2. Bacovis, N.A. et al. (2016). "Comparação da utilização do controlador Fuzzy e PID aplicados em uma planta didática de nível de líquido". Trabalho de Conclusão de Curso - Universidade Tecnológica Federal do Paraná. https://riut.utfpr.edu.br/jspui/handle/1/16187
 
-3. SILVEIRA et al. (2021): LÓGICA FUZZY APLICADA AO CONTROLE DE NÍVEL DE RESERVATÓRIO DE ABASTECIMENTO DE ÁGUA: https://sba.org.br/open_journal_systems/index.php/sbai/article/view/2690
+3. Gomes, K.E. (2022). "Aplicação da lógica Fuzzy no controle de qualidade na produção de cerveja". Dissertação de Mestrado - Universidade Federal de São João del-Rei. https://www.ufsj.edu.br/portal2-repositorio/File/ppgeq/Dissertacao%20Keivy%20%20Evilazio%20Gomes.pdf
 
-4. Almeida, F.J. et al. (2023). "Fuzzy Logic Controller for Multivariable Level Control Systems". *Control Engineering Practice*, 78, 156-168.
+4. Silveira, L.F. et al. (2021). "Lógica Fuzzy aplicada ao controle de nível de reservatório de abastecimento de água". *Anais do XV Simpósio Brasileiro de Automação Inteligente*, 15. https://sba.org.br/open_journal_systems/index.php/sbai/article/view/2690
 
-7. Zhang, L.; Wang, H. (2022). "Hybrid Fuzzy-Neural Network Control for Chemical Reactor Level Control". *IEEE Transactions on Industrial Electronics*, 69(8), 4523-4532.
+5. Carvalho, M.M. et al. (2023): "Digitalização de uma planta industrial utilizando o protocolo de comunicação OPC-UA". *Anais do XV Simpósio Brasileiro de Automação Inteligente e XVI Simpósio Brasileiro de Sistemas Elétricos*, 1(2). https://www.sba.org.br/open_journal_systems/index.php/sbai/article/view/4056
 
-8. Martinez, C.A. et al. (2021). "Adaptive Fuzzy Control for Level Systems with Parameter Variations". *Automatica*, 87, 234-245.
+6. Petrocchi, G.S. (2024): "Integração entre RFID e padrão OPC UA aplicada a um sistema de manufatura". Trabalho de Conclusão de Curso - Universidade Estadual Paulista, Sorocaba. https://repositorio.unesp.br/entities/publication/064f9555-efbe-4d75-8703-11dac163ffdf
 
-9. Kumar, S.; Patel, R. (2023). "Genetic Algorithm Optimized Fuzzy Controller for Coupled Tank Level Control". *Expert Systems with Applications*, 145, 113-127.
+7. Silva, M.R.G. (2023): "Instrumentação de uma planta de manufatura flexível utilizando padrão OPC-UA embarcado". Trabalho de Conclusão de Curso - Universidade Federal de Campina Grande. https://dspace.sti.ufcg.edu.br/xmlui/handle/riufcg/30242
 
-10. Johnson, M.T. et al. (2022). "OPC UA Implementation in Industrial Control Systems: Benefits and Challenges". *Industrial Communication Networks*, 34(6), 412-428.
-
-11. Sousa, D.R.; Lima, J.C. (2023). "OPC UA in Distributed Control Systems: Security and Scalability Analysis". *Cybersecurity in Industrial Systems*, 15(3), 78-93.
-
-12. Anderson, P.K.; Brown, S.L. (2021). "Legacy System Migration to OPC UA Architecture". *Automation and Control Systems*, 42(9), 567-580.
-
-13. Chen, W. et al. (2022). "Distributed Level Control System Architecture Based on OPC UA". *IEEE Transactions on Industrial Informatics*, 18(4), 2845-2856.
-
-14. Rodriguez, J.M. et al. (2023). "Distributed Fuzzy Control Architecture with OPC UA Communication". *Journal of Intelligent Manufacturing*, 34(2), 445-462.
-
-15. Kim, J.H.; Lee, S.Y. (2022). "Cloud-Based Fuzzy Control Platform with OPC UA Integration". *IEEE Internet of Things Journal*, 9(7), 5234-5248.
-
-16. Nascimento, T.F. et al. (2023). "Distributed Fuzzy Level Controllers in OPC UA Industrial Networks". *Brazilian Journal of Automation*, 31(4), 289-304.
+8. Souza, L.V.F. (2024): "Um estudo de caso sobre controle e supervisão de um processo utilizando o padrão OPC". Trabalho de Conclusão de Curso - Instituto Federal do Espírito Santo. https://repositorio.ifes.edu.br/handle/123456789/5447
