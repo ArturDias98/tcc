@@ -26,11 +26,15 @@ Diante deste cenário, o presente trabalho propõe uma abordagem para o controle
 
 #### 1.1.1 Importância do controle de nível
 
-O controle de nível em processos industriais constitui uma das variáveis mais críticas para o funcionamento seguro e eficiente de plantas produtivas. Segundo **Silva et al. (2022)**, sistemas de controle de nível inadequados podem resultar em perdas econômicas significativas, variando entre 15% a 25% dos custos operacionais totais em indústrias petroquímicas. A importância deste tipo de controle é evidenciada por **Oliveira e Santos (2023)**, que demonstram que falhas em sistemas de controle de nível são responsáveis por aproximadamente 30% dos acidentes industriais relacionados a transbordamentos e vazamentos.
+O controle de nível em processos industriais constitui uma das variáveis mais críticas para o funcionamento seguro e eficiente de plantas produtivas. A relevância deste tipo de controle é evidenciada em diversos setores industriais, desde aplicações didáticas até implementações em larga escala industrial.
 
-**Ferreira et al. (2021)** destacam que o controle de nível em tanques e reatores é fundamental para manter a estabilidade de processos químicos, onde variações não controladas podem afetar diretamente a qualidade do produto final. Em plantas de tratamento de água, **Costa e Pereira (2023)** evidenciam que o controle preciso de nível em reservatórios é essencial para garantir o fornecimento contínuo e adequado de água potável, sendo crucial para a gestão eficiente de recursos hídricos.
+**BACOVIS (2016)** realizaram um estudo comparativo entre controladores Fuzzy e PID aplicados em uma planta didática de nível de líquido, demonstrando que o controle adequado de nível é fundamental para o aprendizado e compreensão dos princípios de automação industrial. O trabalho evidencia que plantas de nível são amplamente utilizadas em ambientes educacionais devido à sua capacidade de representar fielmente os desafios encontrados em processos industriais reais, incluindo não linearidades, tempo morto e distúrbios externos.
 
-**Ribeiro (2022)** enfatiza que sistemas de controle de nível modernos devem considerar não apenas a precisão do controle, mas também aspectos relacionados à eficiência energética e sustentabilidade ambiental. O autor demonstra que a implementação de estratégias de controle otimizadas pode reduzir o consumo energético em até 20% em sistemas de bombeamento industrial.
+Na indústria de alimentos e bebidas, **Gomes (2022)** investigou a aplicação da lógica Fuzzy no controle de qualidade na produção de cerveja, onde o controle preciso de nível em tanques de fermentação e maturação é crucial para garantir a qualidade do produto final. O autor demonstra que variações não controladas no nível podem afetar diretamente características organolépticas da cerveja, como aroma, sabor e teor alcoólico, evidenciando a importância crítica do controle de nível em processos biotecnológicos.
+
+Em aplicações de saneamento e abastecimento público, **SILVEIRA et al. (2021)** apresentaram um estudo sobre a aplicação da lógica Fuzzy no controle de nível de reservatório de abastecimento de água, destacando que o controle eficiente de nível é essencial para garantir o fornecimento contínuo e adequado de água potável. Os autores enfatizam que falhas em sistemas de controle de nível podem resultar em desabastecimento populacional, desperdício de recursos hídricos e comprometimento da qualidade da água distribuída.
+
+A importância do controle de nível transcende aspectos puramente técnicos, envolvendo questões econômicas, ambientais e de segurança. Sistemas de controle de nível inadequados podem resultar em perdas significativas de produto, consumo excessivo de energia, riscos ambientais por vazamentos e comprometimento da segurança operacional. Ademais, o controle preciso de nível é fundamental para otimizar o uso de recursos naturais e contribuir para a sustentabilidade de processos industriais.
 
 #### 1.1.2 Utilização de controle Fuzzy para o controle de nível
 
@@ -72,17 +76,15 @@ A convergência entre técnicas de inteligência artificial e protocolos de comu
 
 **Referências para pesquisa posterior:**
 
-1. Silva, J.P. et al. (2022). "Economic Impact of Level Control Systems in Petrochemical Industries". *Journal of Process Control*, 45(3), 123-135.
+- SCHWAB (2016): https://www.redalyc.org/pdf/4966/496654013004.pdf
+ 
+1. BACOVIS (2016): COMPARAÇÃO DA UTILIZAÇÃO DO CONTROLADOR FUZZY E PID APLICADOS EM UM UMA PLANTA DIDÁTICA DE NÍVEL DE LÍQUIDO: https://riut.utfpr.edu.br/jspui/handle/1/16187
 
-2. Oliveira, M.A.; Santos, R.F. (2023). "Safety Analysis of Industrial Level Control Failures". *Industrial Safety Engineering*, 18(2), 67-82.
+2. Gomes (2022): APLICAÇÃO DA LÓGICA FUZZY NO CONTROLE DE QUALIDADE NA PRODUÇÃO DE CERVEJA: https://www.ufsj.edu.br/portal2-repositorio/File/ppgeq/Dissertacao%20Keivy%20%20Evilazio%20Gomes.pdf
 
-3. Ferreira, C.L. et al. (2021). "Level Control in Chemical Reactors: Impact on Product Quality". *Chemical Engineering Research*, 39(7), 245-258.
+3. SILVEIRA et al. (2021): LÓGICA FUZZY APLICADA AO CONTROLE DE NÍVEL DE RESERVATÓRIO DE ABASTECIMENTO DE ÁGUA: https://sba.org.br/open_journal_systems/index.php/sbai/article/view/2690
 
-4. Costa, P.H.; Pereira, L.M. (2023). "Water Treatment Plant Level Control: Challenges and Solutions". *Water Management Technology*, 12(4), 189-203.
-
-5. Ribeiro, A.S. (2022). "Energy Efficiency in Industrial Level Control Systems". *Energy and Automation*, 28(5), 334-347.
-
-6. Almeida, F.J. et al. (2023). "Fuzzy Logic Controller for Multivariable Level Control Systems". *Control Engineering Practice*, 78, 156-168.
+4. Almeida, F.J. et al. (2023). "Fuzzy Logic Controller for Multivariable Level Control Systems". *Control Engineering Practice*, 78, 156-168.
 
 7. Zhang, L.; Wang, H. (2022). "Hybrid Fuzzy-Neural Network Control for Chemical Reactor Level Control". *IEEE Transactions on Industrial Electronics*, 69(8), 4523-4532.
 
