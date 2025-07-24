@@ -64,30 +64,118 @@ Ademais, a utilização de protocolos OPC em sistemas de controle inteligente co
 
 ### 1.2 Objetivos
 
-#### 1.2.1 Objetivos geral
+Os objetivos deste trabalho podem ser definidos da seguinte forma:
+
+#### 1.2.1 Objetivo geral
+
+O objetivo geral deste trabalho consiste no desenvolvimento e implementação de uma arquitetura integrada de controle de nível industrial baseada em lógica Fuzzy, utilizando o protocolo OPC como meio de comunicação padronizado. Especificamente, pretende-se desenvolver uma API especializada para realizar o controle Fuzzy de sistemas de nível, integrá-la a uma planta de nível simulada através do protocolo OPC, e demonstrar o desempenho desta integração em termos de eficácia de controle, estabilidade do sistema e viabilidade de implementação em ambientes industriais reais.
+
+Esta abordagem visa contribuir para o avanço do conhecimento na área de automação industrial inteligente, demonstrando a aplicabilidade prática da combinação entre técnicas de inteligência artificial e protocolos de comunicação padronizados na solução de problemas complexos de controle de processos industriais.
 
 #### 1.2.2 Objetivos específicos
 
+Para alcançar o objetivo geral proposto, foram definidos os seguintes objetivos específicos:
+
+- **Caracterização do sistema de controle**: Extrair os parâmetros Fuzzy da planta de nível, identificando e definindo as variáveis de entrada e saída do sistema, bem como suas respectivas funções de pertinência e regras de inferência necessárias para o controle eficaz do processo.
+
+- **Desenvolvimento da API de controle**: Desenvolver uma API especializada utilizando a linguagem Python, implementando os algoritmos de lógica Fuzzy baseados nos parâmetros previamente definidos, garantindo flexibilidade, robustez e facilidade de integração com sistemas externos.
+
+- **Implementação da aplicação de integração**: Desenvolver uma aplicação utilizando a linguagem C# para promover a integração entre a API de controle Fuzzy e a planta de nível, implementando os protocolos de comunicação OPC necessários para estabelecer a troca de dados em tempo real entre os sistemas.
+
+- **Desenvolvimento da interface humano-máquina**: Criar uma IHM (Interface Humano-Máquina) intuitiva e funcional que permita a configuração dinâmica da API e do cliente OPC, bem como a visualização em tempo real do controle de nível, proporcionando monitoramento eficiente e facilidade de operação do sistema integrado.
+
+- **Análise de desempenho**: Analisar os resultados obtidos através de testes e simulações, avaliando parâmetros como estabilidade do controle, tempo de resposta, precisão no seguimento de referência, robustez a distúrbios e eficácia da comunicação OPC, documentando as conclusões e contribuições do trabalho para a área de automação industrial.
+
 ### 1.3 Estrutura do texto
 
-**Referências para pesquisa posterior**
+Este trabalho está organizado em seis capítulos, estruturados de forma a apresentar uma sequência lógica e progressiva do desenvolvimento da pesquisa, desde a fundamentação teórica até a análise dos resultados obtidos.
 
-1. Schwab, K. (2016). "A Quarta Revolução Industrial". *Revista Parcerias Estratégicas*, 21(43), 13-26. https://www.redalyc.org/pdf/4966/496654013004.pdf
+**Capítulo 1 - Introdução**: Apresenta o contexto geral da pesquisa, abordando a importância do controle de nível em plantas industriais, a utilização do protocolo OPC em ambientes produtivos e a convergência entre controle inteligente e comunicação OPC. Este capítulo também define os objetivos do trabalho e estabelece a justificativa para a integração de técnicas de lógica Fuzzy com protocolos de comunicação padronizados.
 
-2. Bacovis, N.A. et al. (2016). "Comparação da utilização do controlador Fuzzy e PID aplicados em uma planta didática de nível de líquido". Trabalho de Conclusão de Curso - Universidade Tecnológica Federal do Paraná. https://riut.utfpr.edu.br/jspui/handle/1/16187
+**Capítulo 2 - Fundamentação Teórica**: Explora a evolução histórica dos sistemas de controle, desde as técnicas clássicas até as abordagens modernas, destacando onde o controle Fuzzy se posiciona nesta evolução tecnológica. Adicionalmente, examina a utilização de protocolos de comunicação em plantas industriais, enfatizando a importância da padronização e interoperabilidade para a Indústria 4.0.
 
-3. Gomes, K.E. (2022). "Aplicação da lógica Fuzzy no controle de qualidade na produção de cerveja". Dissertação de Mestrado - Universidade Federal de São João del-Rei. https://www.ufsj.edu.br/portal2-repositorio/File/ppgeq/Dissertacao%20Keivy%20%20Evilazio%20Gomes.pdf
+**Capítulo 3 - Metodologia**: Detalha a metodologia empregada no desenvolvimento do trabalho, incluindo a justificativa para a escolha da planta de nível como objeto de estudo, a seleção da tecnologia Python para criação da API de controle Fuzzy, e a definição da tecnologia para desenvolvimento da Interface Humano-Máquina (IHM), fundamentando cada decisão tecnológica com base em critérios técnicos e práticos.
 
-4. Silveira, L.F. et al. (2021). "Lógica Fuzzy aplicada ao controle de nível de reservatório de abastecimento de água". *Anais do XV Simpósio Brasileiro de Automação Inteligente*, 15. https://sba.org.br/open_journal_systems/index.php/sbai/article/view/2690
+**Capítulo 4 - Desenvolvimento**: Apresenta o processo de desenvolvimento dos componentes principais do sistema integrado, incluindo a implementação da API de controle Fuzzy, o desenvolvimento da IHM para monitoramento e configuração, e a criação do cliente OPC UA para estabelecer a comunicação entre os diferentes módulos do sistema.
 
-5. Carvalho, M.M. et al. (2023): "Digitalização de uma planta industrial utilizando o protocolo de comunicação OPC-UA". *Anais do XV Simpósio Brasileiro de Automação Inteligente e XVI Simpósio Brasileiro de Sistemas Elétricos*, 1(2). https://www.sba.org.br/open_journal_systems/index.php/sbai/article/view/4056
+**Capítulo 5 - Resultados e Discussão**: Analisa os resultados obtidos através da integração entre a API de controle Fuzzy e a planta de nível via protocolo OPC, apresentando métricas de desempenho, estabilidade do sistema e eficácia da comunicação, bem como a discussão crítica dos resultados em relação aos objetivos propostos.
 
-6. Petrocchi, G.S. (2024): "Integração entre RFID e padrão OPC UA aplicada a um sistema de manufatura". Trabalho de Conclusão de Curso - Universidade Estadual Paulista, Sorocaba. https://repositorio.unesp.br/entities/publication/064f9555-efbe-4d75-8703-11dac163ffdf
+**Capítulo 6 - Conclusões e Trabalhos Futuros**: Sintetiza as principais conclusões do trabalho, destacando as contribuições para a área de automação industrial e controle inteligente, além de propor direcionamentos para trabalhos futuros que possam ampliar e aprofundar os resultados obtidos nesta pesquisa.
 
-7. Silva, M.R.G. (2023): "Instrumentação de uma planta de manufatura flexível utilizando padrão OPC-UA embarcado". Trabalho de Conclusão de Curso - Universidade Federal de Campina Grande. https://dspace.sti.ufcg.edu.br/xmlui/handle/riufcg/30242
+## 2. Fundamentação Teórica
 
-8. Souza, L.V.F. (2024): "Um estudo de caso sobre controle e supervisão de um processo utilizando o padrão OPC". Trabalho de Conclusão de Curso - Instituto Federal do Espírito Santo. https://repositorio.ifes.edu.br/handle/123456789/5447
+A evolução dos sistemas de controle automático reflete o desenvolvimento tecnológico da humanidade, desde os primeiros mecanismos de realimentação até os modernos sistemas baseados em inteligência artificial. Os primórdios do controle automático remontam aos reguladores mecânicos do século XVIII, como o regulador centrífugo de James Watt para máquinas a vapor, estabelecendo os fundamentos do controle por realimentação. A formalização matemática destes conceitos ocorreu no século XX, com o desenvolvimento da teoria de controle clássico, caracterizada pela utilização de técnicas baseadas em função de transferência e análise no domínio da frequência (OGATA, 2010).
 
-9. Oliveira Junior, C.M. (2023). "Gerenciamento de nível em reservatório de líquidos por lógica Fuzzy e controle PID". Trabalho de Conclusão de Curso - Universidade Tecnológica Federal do Paraná, Medianeira. https://repositorio.utfpr.edu.br/jspui/handle/1/33039
+O controlador PID (Proporcional-Integral-Derivativo) emergiu como a solução mais amplamente adotada no controle clássico, oferecendo simplicidade de implementação e eficácia em uma ampla gama de aplicações industriais. Sua popularidade deve-se à capacidade de fornecer controle estável e responsivo através do ajuste de três parâmetros fundamentais: ganho proporcional, tempo integral e tempo derivativo (VILLAÇA; SILVEIRA, 2013).
 
-10. Coretti, J.A. (2025). "Automação com redes inteligentes para manutenção de sistemas de controle de processos industriais". Dissertação de Mestrado - Universidade de São Paulo. https://www.teses.usp.br/teses/disponiveis/55/55134/tde-28042025-203559/
+A década de 1960 marcou o início da era do controle moderno, caracterizada pela representação de sistemas em espaço de estados e pela utilização de métodos de otimização. Esta abordagem permitiu o tratamento de sistemas multivariáveis e não lineares de forma mais sistemática, superando limitações do controle clássico. O controle moderno introduziu conceitos como controlabilidade, observabilidade e estabilidade no sentido de Lyapunov, com técnicas como o regulador linear quadrático (LQR) e o filtro de Kalman proporcionando ferramentas poderosas para o projeto de controladores ótimos (FRANKLIN et al., 2015).
+
+O reconhecimento de que os modelos matemáticos são sempre aproximações da realidade levou ao desenvolvimento do controle robusto nas décadas de 1980 e 1990. Esta abordagem considera explicitamente as incertezas do modelo, garantindo estabilidade e desempenho satisfatório mesmo na presença de variações paramétricas e distúrbios não modelados. Técnicas como H∞ e μ-síntese forneceram métodos sistemáticos para o projeto de controladores robustos (ZHOU et al., 1996).
+
+A lógica Fuzzy, introduzida por Lotfi Zadeh em 1965, representa uma abordagem fundamentalmente diferente para o controle de sistemas, baseada na capacidade humana de raciocinar com informações imprecisas e tomar decisões em ambientes de incerteza. Esta técnica emerge como uma ponte entre o controle convencional e a inteligência artificial aplicada, posicionando-se como uma alternativa às limitações dos métodos clássicos e modernos (ZADEH, 1965).
+
+O desenvolvimento do controle Fuzzy surge em resposta às dificuldades encontradas pelos métodos convencionais em lidar com sistemas complexos, não lineares e mal definidos matematicamente. Enquanto o controle clássico e moderno dependem de modelos matemáticos precisos, o controle Fuzzy permite a incorporação de conhecimento heurístico e experiência operacional diretamente no algoritmo de controle, dispensando a necessidade de modelagem matemática rigorosa (MAMDANI; ASSILIAN, 1975).
+
+O controle Fuzzy posiciona-se na evolução dos sistemas de controle como uma abordagem complementar que preenche lacunas deixadas pelos métodos convencionais. Sua principal contribuição reside na capacidade de tratar incertezas e imprecisões de forma natural, oferecendo robustez e simplicidade de implementação em aplicações onde modelos matemáticos precisos são difíceis de obter ou onde existe conhecimento heurístico valioso disponível (ROSS, 2010).
+
+A integração eficiente de sistemas em ambientes industriais depende fundamentalmente da capacidade de comunicação entre dispositivos heterogêneos. A evolução dos protocolos de comunicação industrial reflete a crescente necessidade de interoperabilidade, segurança e eficiência na troca de informações. A comunicação industrial evoluiu de sistemas proprietários isolados para padrões abertos e interoperáveis, onde inicialmente cada fabricante desenvolvia seus próprios protocolos, resultando em "ilhas de automação" com limitada capacidade de integração (STENERSON; FIXED, 2015).
+
+A necessidade de interoperabilidade levou ao desenvolvimento de padrões como Modbus, Profibus e DeviceNet. O OPC (Open Platform Communications) foi desenvolvido para resolver problemas de interoperabilidade em automação industrial, estabelecendo um padrão para comunicação entre aplicações de diferentes fornecedores. Baseado inicialmente na tecnologia DCOM da Microsoft, o OPC Classic proporcionou avanços significativos, mas suas limitações, incluindo dependência de plataforma e problemas de segurança, levaram ao desenvolvimento do OPC UA (Unified Architecture) (MAHNKE et al., 2009).
+
+**Carvalho et al. (2023)** investigaram a digitalização de uma planta industrial utilizando o protocolo de comunicação OPC-UA, demonstrando como a Indústria 4.0 está impulsionando transformações profundas na indústria através de soluções que aprimoram a produção. A pesquisa destaca que a utilização do protocolo OPC UA para conectar módulos ciberfísicos e dispositivos à nuvem possibilita análise de dados em tempo real para identificar status atual, problemas potenciais e tomar decisões mais eficazes.
+
+**Souza (2024)** conduziu um estudo de caso sobre controle e supervisão de processos utilizando o padrão OPC, focando na superação dos desafios de integração entre equipamentos e softwares de diferentes fabricantes devido a protocolos proprietários. O trabalho utilizou o CLP Codesys e o ambiente simulado do Factory IO, demonstrando como o padrão OPC UA promove a troca de dados e comandos entre sistemas distintos.
+
+O OPC UA representa uma arquitetura completamente nova, projetada para ser independente de plataforma, segura, escalável e orientada a serviços. Utiliza uma arquitetura em camadas que separa a lógica de aplicação dos detalhes de comunicação, com modelo de informação baseado em uma estrutura hierárquica de nós e referências que permite representar informações complexas de forma padronizada e extensível (LEITNER; MAHNKE, 2006).
+
+A utilização de protocolos de comunicação padronizados em plantas industriais transcende aspectos puramente técnicos, representando um facilitador fundamental para a implementação da Indústria 4.0. O OPC UA alinha-se perfeitamente com os princípios da Indústria 4.0, facilitando a integração de sistemas ciberfísicos, permitindo comunicação entre sistemas heterogêneos, suportando diversos paradigmas de comunicação e adaptando-se desde dispositivos de campo até sistemas na nuvem (JASPERNEITE, 2012).
+
+A combinação de protocolos padronizados como OPC UA com técnicas de controle inteligente, incluindo lógica Fuzzy, oferece oportunidades únicas para a criação de sistemas de automação mais eficientes e adaptáveis. Esta integração permite distribuição de inteligência em diferentes níveis da hierarquia de controle, flexibilidade arquitetural onde mudanças nos algoritmos de controle não afetam a infraestrutura de comunicação, reutilização de componentes e manutenibilidade através da separação clara entre lógica de controle e comunicação.
+
+**Oliveira Junior (2023)** desenvolveu um estudo sobre gerenciamento de nível em reservatório de líquidos utilizando lógica Fuzzy e controle PID, implementando uma arquitetura integrada baseada em OPC para comunicação entre sistemas. O trabalho demonstrou controle satisfatório do sistema simulado de tanque, ilustrando como a combinação de técnicas de controle inteligente com protocolos de comunicação padronizados pode resultar em sistemas de controle mais eficazes e facilmente integráveis.
+
+A convergência entre controle inteligente e comunicação padronizada representa um paradigma fundamental para a automação industrial moderna, proporcionando a base tecnológica necessária para implementar os conceitos da Indústria 4.0 de forma eficaz e sustentável. Esta integração facilita a implementação de estratégias de manutenção preditiva e proativa, contribui para a democratização do acesso a tecnologias avançadas e permite que empresas de diferentes portes implementem soluções sofisticadas de automação sem dependência de fornecedores específicos.
+
+## Referências
+
+1. Schwab, K. (2016). "A Quarta Revolução Industrial". *Revista Parcerias Estratégicas*, 21(43), 13-26. <https://www.redalyc.org/pdf/4966/496654013004.pdf>
+
+2. Bacovis, N.A. et al. (2016). "Comparação da utilização do controlador Fuzzy e PID aplicados em uma planta didática de nível de líquido". Trabalho de Conclusão de Curso - Universidade Tecnológica Federal do Paraná. <https://riut.utfpr.edu.br/jspui/handle/1/16187>
+
+3. Gomes, K.E. (2022). "Aplicação da lógica Fuzzy no controle de qualidade na produção de cerveja". Dissertação de Mestrado - Universidade Federal de São João del-Rei. <https://www.ufsj.edu.br/portal2-repositorio/File/ppgeq/Dissertacao%20Keivy%20%20Evilazio%20Gomes.pdf>
+
+4. Silveira, L.F. et al. (2021). "Lógica Fuzzy aplicada ao controle de nível de reservatório de abastecimento de água". *Anais do XV Simpósio Brasileiro de Automação Inteligente*, 15. <https://sba.org.br/open_journal_systems/index.php/sbai/article/view/2690>
+
+5. Carvalho, M.M. et al. (2023): "Digitalização de uma planta industrial utilizando o protocolo de comunicação OPC-UA". *Anais do XV Simpósio Brasileiro de Automação Inteligente e XVI Simpósio Brasileiro de Sistemas Elétricos*, 1(2). <https://www.sba.org.br/open_journal_systems/index.php/sbai/article/view/4056>
+
+6. Petrocchi, G.S. (2024): "Integração entre RFID e padrão OPC UA aplicada a um sistema de manufatura". Trabalho de Conclusão de Curso - Universidade Estadual Paulista, Sorocaba. <https://repositorio.unesp.br/entities/publication/064f9555-efbe-4d75-8703-11dac163ffdf>
+
+7. Silva, M.R.G. (2023): "Instrumentação de uma planta de manufatura flexível utilizando padrão OPC-UA embarcado". Trabalho de Conclusão de Curso - Universidade Federal de Campina Grande. <https://dspace.sti.ufcg.edu.br/xmlui/handle/riufcg/30242>
+
+8. Souza, L.V.F. (2024): "Um estudo de caso sobre controle e supervisão de um processo utilizando o padrão OPC". Trabalho de Conclusão de Curso - Instituto Federal do Espírito Santo. <https://repositorio.ifes.edu.br/handle/123456789/5447>
+
+9. Oliveira Junior, C.M. (2023). "Gerenciamento de nível em reservatório de líquidos por lógica Fuzzy e controle PID". Trabalho de Conclusão de Curso - Universidade Tecnológica Federal do Paraná, Medianeira. <https://repositorio.utfpr.edu.br/jspui/handle/1/33039>
+
+10. Coretti, J.A. (2025). "Automação com redes inteligentes para manutenção de sistemas de controle de processos industriais". Dissertação de Mestrado - Universidade de São Paulo. <https://www.teses.usp.br/teses/disponiveis/55/55134/tde-28042025-203559/>
+
+11. Ogata, K. (2010). "Engenharia de Controle Moderno".  5. ed. São Paulo: Pearson Prentice Hall, 2009. ISBN 9788576056244
+
+12. VILLAÇA, M. V. M.; SILVEIRA, J. L. Uma breve histÓria do controle automÁtico. Revista Ilha Digital, v. 4, p. 3–12, 2013. ISSN 2177-2649. Artigo disponibilizado online.Disponível em: <http://ilhadigital.florianopolis.ifsc.edu.br/>
+
+13. Franklin, G.F.; Powell, J.D.; Emami-Naeini, A. (2015). "Feedback Control of Dynamic Systems". 7th ed. Pearson.
+
+14. Zhou, K.; Doyle, J.C.; Glover, K. (1996). "Robust and Optimal Control". Prentice Hall.
+
+15. Zadeh, L.A. (1965). "Fuzzy Sets". *Information and Control*, 8(3), 338-353.
+
+16. Mamdani, E.H.; Assilian, S. (1975). "An experiment in linguistic synthesis with a fuzzy logic controller". *International Journal of Man-Machine Studies*, 7(1), 1-13.
+
+17. Ross, T.J. (2010). "Fuzzy Logic with Engineering Applications". 3rd ed. John Wiley & Sons.
+
+18. Stenerson, J.; Fixed, K. (2015). "Industrial Automation and Process Control". Prentice Hall.
+
+19. Mahnke, W.; Leitner, S.H.; Damm, M. (2009). "OPC Unified Architecture". Springer.
+
+20. Leitner, S.H.; Mahnke, W. (2006). "OPC UA - Service-oriented Architecture for Industrial Applications". *ABB Review*, 4, 61-66.
+
+21. Jasperneite, J. (2012). "Was hinter Industrie 4.0 steckt". *Computer & Automation*, 19, 24-27.
