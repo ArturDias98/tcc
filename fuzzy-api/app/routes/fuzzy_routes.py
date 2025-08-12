@@ -42,12 +42,15 @@ def calculate_performance_metrics():
         t_array = np.array(t)
 
         # Cálculo das métricas
-        mse, overshoot, settling_time = compute_metrics(y_array, t_array, ref, tol)
+        mse, overshoot, undershoot, settling_time = compute_metrics(
+            y_array, t_array, ref, tol
+        )
 
         # Preparação da resposta
         response = {
             "mse": float(mse) if not np.isnan(mse) else None,
             "overshoot": float(overshoot) if not np.isnan(overshoot) else None,
+            "undershoot": float(undershoot) if not np.isnan(undershoot) else None,
             "settling_time": (
                 float(settling_time) if not np.isnan(settling_time) else None
             ),
