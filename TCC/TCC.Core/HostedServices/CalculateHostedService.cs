@@ -17,19 +17,19 @@ public class CalculateHostedService(
     ILogger<CalculateHostedService> logger) : BackgroundService
 {
     private ECalculateStatus _status = ECalculateStatus.Idle;
+    private SettingsModel _settings = new();
     private List<double> _levels = [];
     private List<double> _time = [];
 
+    private async Task UpdateSettingsAsync(CancellationToken cancellationToken)
+    {
+        _settings = await settingsService
+            .GetSettingsAsync(cancellationToken)
+            .ConfigureAwait(false);
+    }
+    
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var settings = await settingsService
-            .GetSettingsAsync(stoppingToken)
-            .ConfigureAwait(false);
-
-        var errorTag = settings.OpcModel.ErrorTag;
-        var outputTag = settings.OpcModel.OutputTag;
-        var rateTag = settings.OpcModel.RateTag;
-        var levelTag = settings.OpcModel.LevelTag;
         var time = DateTime.Now;
 
         while (!stoppingToken.IsCancellationRequested)
@@ -40,7 +40,7 @@ public class CalculateHostedService(
                 {
                     var metrics = await apiService.GetMetricsAsync(
                             monitoringService.Setpoint,
-                            0.02,
+                            _settings.ApiModel.Tolerance,
                             _levels,
                             _time,
                             stoppingToken)
@@ -56,14 +56,30 @@ public class CalculateHostedService(
                     _time = [];
                 }
 
-                await Task.Delay(500, stoppingToken).ConfigureAwait(false);
+                await Task
+                    .Delay(500, stoppingToken)
+                    .ConfigureAwait(false);
+                
                 time = DateTime.Now;
+                
                 continue;
             }
 
             try
             {
+                if (_status != ECalculateStatus.Calculating)
+                {
+                    await UpdateSettingsAsync(stoppingToken)
+                        .ConfigureAwait(false);
+                }
+                
+                var errorTag = _settings.OpcModel.ErrorTag;
+                var outputTag = _settings.OpcModel.OutputTag;
+                var rateTag = _settings.OpcModel.RateTag;
+                var levelTag = _settings.OpcModel.LevelTag;
+                
                 _status = ECalculateStatus.Calculating;
+                
                 var read = await opcClient.ReadAsync(
                     [errorTag, rateTag, levelTag],
                     stoppingToken)

@@ -13,15 +13,15 @@ namespace TCC.UI.RazorLib.Pages;
 public partial class Home : IHandle<DataModel>, IHandle<MetricsModel>, IHandle<ClearPlotEvent>, IDisposable
 {
     private PlotModel _plotModel = new();
-    
+
     private double _rate = 0;
     private double _error = 0;
     private double _output = 0;
-    
+
     private double _mse = 0;
     private double _overshoot = 0;
     private double _settlingTime = 0;
-    
+
     private void LoadPlotModel()
     {
         _plotModel = new PlotModel
@@ -31,11 +31,11 @@ public partial class Home : IHandle<DataModel>, IHandle<MetricsModel>, IHandle<C
             TextColor = OxyColors.Black
         };
 
-        var axisX = new DateTimeAxis 
+        var axisX = new DateTimeAxis
         {
             Position = AxisPosition.Bottom,
             Minimum = DateTimeAxis.ToDouble(DateTime.Now),
-            Maximum =  DateTimeAxis.ToDouble(DateTime.Now.AddSeconds(10)),
+            Maximum = DateTimeAxis.ToDouble(DateTime.Now.AddSeconds(10)),
             TicklineColor = OxyColors.Black,
             IsPanEnabled = false,
             IsZoomEnabled = false,
@@ -55,8 +55,8 @@ public partial class Home : IHandle<DataModel>, IHandle<MetricsModel>, IHandle<C
 
         _plotModel.Axes.Add(axisX);
         _plotModel.Axes.Add(axisY);
-        _plotModel.Series.Add(new LineSeries(){Title = "Level", Color = OxyColors.Blue});
-        _plotModel.Series.Add(new LineSeries(){Title = "Setpoint", Color = OxyColors.Red});
+        _plotModel.Series.Add(new LineSeries() { Title = "Level", Color = OxyColors.Blue });
+        _plotModel.Series.Add(new LineSeries() { Title = "Setpoint", Color = OxyColors.Red });
     }
 
     [Inject] private IEventAggregator EventAggregator { get; set; } = null!;
@@ -67,7 +67,7 @@ public partial class Home : IHandle<DataModel>, IHandle<MetricsModel>, IHandle<C
         _rate = message.Rate;
         _error = message.Error;
         _output = message.Output;
-        
+
         var levelSeries = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
         var setpointSeries = _plotModel.Series[1] as LineSeries ?? throw new Exception("Series is not a LineSeries");
 
@@ -78,38 +78,42 @@ public partial class Home : IHandle<DataModel>, IHandle<MetricsModel>, IHandle<C
 
         return InvokeAsync(StateHasChanged);
     }
-    
+
     public Task HandleAsync(MetricsModel message)
     {
         _mse = message.Mse;
-        _overshoot = message.Overshoot;
         _settlingTime = message.SettlingTime;
-        
+
+        var levelSeries = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
+        var start = levelSeries.Points[0].Y;
+
+        _overshoot = start >= MonitoringService.Setpoint ? message.Undershoot : message.Overshoot;
+
         return InvokeAsync(StateHasChanged);
     }
-    
+
     public Task HandleAsync(ClearPlotEvent message)
     {
         _rate = 0;
         _error = 0;
         _output = 0;
-        
+
         _mse = 0;
         _overshoot = 0;
         _settlingTime = 0;
-        
+
         var levelSeries = _plotModel.Series[0] as LineSeries ?? throw new Exception("Series is not a LineSeries");
         levelSeries.Points.Clear();
-        
+
         var setpointSeries = _plotModel.Series[1] as LineSeries ?? throw new Exception("Series is not a LineSeries");
         setpointSeries.Points.Clear();
-        
+
         var xAxis = _plotModel.Axes[0] as DateTimeAxis ?? throw new Exception("X Axis is not a DateTimeAxis");
         xAxis.Minimum = DateTimeAxis.ToDouble(DateTime.Now);
         xAxis.Maximum = DateTimeAxis.ToDouble(DateTime.Now.AddSeconds(message.IntervalSeconds));
-        
+
         _plotModel.InvalidatePlot(true);
-        
+
         return InvokeAsync(StateHasChanged);
     }
 

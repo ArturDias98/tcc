@@ -75,6 +75,7 @@ internal sealed class ApiService(
             {
                 Mse = content.MSE ?? 0,
                 Overshoot = content.Overshoot ?? 0,
+                Undershoot = content.Undershoot ?? 0,
                 SettlingTime = content.SettlingTime ?? 0
             };
         }
