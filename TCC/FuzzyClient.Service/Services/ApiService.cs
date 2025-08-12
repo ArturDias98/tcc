@@ -66,16 +66,16 @@ internal sealed class ApiService(
                     Time = t
                 }, 
                 cancellation);
-
+            
             var content = await response
                 .Content
                 .ReadFromJsonAsync<MetricsResponseModel>(cancellation) ?? new MetricsResponseModel();
             
             return new MetricsModel()
             {
-                Mse = content.MSE,
-                Overshoot = content.Overshoot,
-                SettlingTime = content.SettlingTime
+                Mse = content.MSE ?? 0,
+                Overshoot = content.Overshoot ?? 0,
+                SettlingTime = content.SettlingTime ?? 0
             };
         }
         catch (Exception e)
