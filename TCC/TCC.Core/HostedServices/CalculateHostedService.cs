@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using FuzzyClient.Service.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -20,6 +21,7 @@ public class CalculateHostedService(
     private SettingsModel _settings = new();
     private List<double> _levels = [];
     private List<double> _time = [];
+    private double _calculate;
 
     private async Task UpdateSettingsAsync(CancellationToken cancellationToken)
     {
@@ -28,10 +30,22 @@ public class CalculateHostedService(
             .ConfigureAwait(false);
     }
     
+    private async Task CalculateAsync(
+        double error,
+        double rate,
+        CancellationToken cancellationToken)
+    {
+        _calculate = await apiService.CalculateAsync(
+                error,
+                rate,
+                cancellationToken)
+            .ConfigureAwait(false);
+    }
+    
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var time = DateTime.Now;
-
+        var stopwatch = new Stopwatch();
         while (!stoppingToken.IsCancellationRequested)
         {
             if (!monitoringService.IsMonitoring)
@@ -98,23 +112,35 @@ public class CalculateHostedService(
                 _levels.Add(level);
                 _time.Add(seconds);
                 
-                var calculate = await apiService.CalculateAsync(
-                    error,
-                    rate,
-                    stoppingToken)
-                    .ConfigureAwait(false);
+                stopwatch.Reset();
+                
+                stopwatch.Start();
 
+                await Task.WhenAll(
+                    CalculateAsync(error, rate, stoppingToken),
+                    Task.Delay(_settings.ApiModel.ApiDelay, stoppingToken))
+                    .ConfigureAwait(false);
+                
+                stopwatch.Stop();
+                
+                var apiLatency = stopwatch.ElapsedMilliseconds;
+                
+                logger.LogInformation(
+                    "Api execution time {ElapsedMilliseconds} ms",
+                    apiLatency);
+                
                 await Task.WhenAll(opcClient.WriteAsync(
                         outputTag,
-                        calculate,
+                        _calculate,
                         stoppingToken),
                     publisher.PublishAsync(
                         new DataModel(
                             error,
                             level,
                             rate,
-                            calculate,
-                            DateTime.Now),
+                            _calculate,
+                            DateTime.Now,
+                            apiLatency),
                         stoppingToken))
                     .ConfigureAwait(false);
             }

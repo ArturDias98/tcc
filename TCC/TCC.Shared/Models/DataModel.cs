@@ -5,4 +5,5 @@ public record DataModel(
     double Level,
     double Rate,
     double Output,
-    DateTime Timestamp);
+    DateTime Timestamp,
+    long ApiLatency);

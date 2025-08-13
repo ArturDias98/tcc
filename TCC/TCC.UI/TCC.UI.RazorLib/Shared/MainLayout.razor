@@ -1,5 +1,8 @@
-﻿@using TCC.Shared.Services
+﻿@using EventAggregator.Blazor
+@using TCC.Shared.Models
+@using TCC.Shared.Services
 @inherits LayoutComponentBase
+@implements IHandle<TCC.Shared.Models.DataModel>
 
 <Layout Style="height: 100vh; overflow: hidden;">
 	<PageHeader Title="IFES"
@@ -11,7 +14,7 @@
 					@("Opc")
 					<Divider Type="DividerType.Vertical"></Divider>
 					<Icon Type="@(ApiStatusService.IsConnected ? IconType.Outline.Check : IconType.Outline.Close)"></Icon>
-					@("Api")
+					@("Api") @($"{_apiLatency} ms")
 				</div>
 				<Divider Type="DividerType.Vertical"></Divider>
 				<Monitoring></Monitoring>
@@ -41,6 +44,9 @@
 
 @code {
 	private bool _settingsVisible;
+	private long _apiLatency;
+	private List<long> _latencies = [];
+	private long _opcLatency;
 
 	private void ToggleSettings()
 	{
@@ -62,4 +68,27 @@
 
 	[Inject] private IOpcStatusService OpcStatusService { get; set; } = null!;
 	[Inject] private IApiStatusService ApiStatusService { get; set; } = null!;
+	[Inject] private IEventAggregator EventAggregator { get; set; } = null!;
+	
+	protected override void OnAfterRender(bool firstRender)
+	{
+		if (!firstRender) return;
+		
+		EventAggregator.Subscribe(this);
+	}
+	
+	public Task HandleAsync(DataModel message)
+	{
+		_latencies.Add(message.ApiLatency);
+		
+		if (_latencies.Count > 20)
+		{
+			_latencies.RemoveAt(0);
+		}
+		
+		_apiLatency = (long)_latencies.Average();
+		
+		return InvokeAsync(StateHasChanged);
+	}
+
 }
