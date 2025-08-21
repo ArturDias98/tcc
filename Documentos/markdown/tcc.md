@@ -8,6 +8,18 @@ A lógica Fuzzy, técnica de inteligência artificial que possibilita o tratamen
 
 O objetivo principal deste trabalho consiste na implementação de uma arquitetura de integração entre uma API responsável pelo controle Fuzzy e uma planta de nível simulada, utilizando o protocolo OPC como meio de comunicação. Esta abordagem visa demonstrar a viabilidade da aplicação de técnicas de inteligência artificial em ambientes industriais reais, aproveitando-se da padronização e ampla adoção do protocolo OPC na indústria moderna.
 
+## Abstract
+
+In the field of industrial automation, the integration between control systems is a fundamental requirement for efficient monitoring and control of production processes. This work presents the development of a level supervision and control system based on Fuzzy logic, integrated through the OPC (Open Platform Communications) protocol.
+
+Fuzzy logic, an artificial intelligence technique that enables the handling of uncertainties and imprecisions inherent to industrial processes, proves particularly suitable for level plant control. Such systems, widely used in the petrochemical, pharmaceutical, and food and beverage industries, are characterized by their nonlinear and often multivariable nature, presenting significant challenges for conventional control techniques.
+
+The main objective of this work is to implement an integration architecture between an API responsible for Fuzzy control and a simulated level plant, using the OPC protocol as the communication medium. This approach aims to demonstrate the feasibility of applying artificial intelligence techniques in real industrial environments, taking advantage of the standardization and widespread adoption of the OPC protocol in modern industry.
+
+## Agradecimentos
+
+Agradeço a Deus por me conceder força, sabedoria e perseverança ao longo desta jornada. Sou profundamente grato à minha família pelo apoio incondicional, incentivo e amor, fundamentais para a realização deste trabalho. Estendo meus sinceros agradecimentos a todos os professores que me orientaram com conhecimento, paciência e dedicação, contribuindo significativamente para meu crescimento acadêmico e pessoal. Por fim, reconheço o Instituto Federal do Espírito Santo por proporcionar recursos, oportunidades e um ambiente propício ao aprendizado e desenvolvimento.
+
 ## Sumário
 
 - **1. Introdução**
@@ -781,7 +793,6 @@ Fonte: Elaborado pelo autor (2025)
 </div>
 
 A análise dos três primeiros experimentos de enchimento com arquitetura distribuída revela desempenho notavelmente superior ao sistema nativo. O MSE apresenta valores consistentemente menores (0,0174 → 0,0140 → 0,0150) comparados ao controlador nativo (0,02 → 0,0231 → 0,0224), demonstrando maior precisão da implementação distribuída. Os tempos de acomodação mostram melhoria progressiva: ligeiro aumento de 2,4% no teste 1, seguido por melhorias significativas de 6,1% e 6,2% nos testes 2 e 3, respectivamente. Os sobressinais negativos mantêm-se consistentes (-0,0102 → -0,0097 → -0,0093), preservando a estratégia conservadora do controlador original enquanto demonstram maior estabilidade que o sistema nativo.
-Fonte: Elaborado pelo autor (2025)
 
 </div>
 
@@ -986,19 +997,20 @@ O sucesso da arquitetura proposta valida a viabilidade de abordagens de código 
 
 ## Referências
 
-1. Schwab, K. (2016). "A Quarta Revolução Industrial". *Revista Parcerias Estratégicas*, 21(43), 13-26. <https://www.redalyc.org/pdf/4966/496654013004.pdf>
+1. Schwab, K. (2016). "Tecnologia social: implicações e desafios da
+implantação". *Revista Parcerias Estratégicas*, 21(43), 13-26. <https://www.redalyc.org/pdf/4966/496654013004.pdf>
 
 2. Bacovis, N.A. et al. (2016). "Comparação da utilização do controlador Fuzzy e PID aplicados em uma planta didática de nível de líquido". Trabalho de Conclusão de Curso - Universidade Tecnológica Federal do Paraná. <https://riut.utfpr.edu.br/jspui/handle/1/16187>
 
 3. Gomes, K.E. (2022). "Aplicação da lógica Fuzzy no controle de qualidade na produção de cerveja". Dissertação de Mestrado - Universidade Federal de São João del-Rei. <https://www.ufsj.edu.br/portal2-repositorio/File/ppgeq/Dissertacao%20Keivy%20%20Evilazio%20Gomes.pdf>
 
-4. Silveira, L.F. et al. (2021). "Lógica Fuzzy aplicada ao controle de nível de reservatório de abastecimento de água". *Anais do XV Simpósio Brasileiro de Automação Inteligente*, 15. <https://sba.org.br/open_journal_systems/index.php/sbai/article/view/2690>
+4. Silveira, L.F. et al. (2021). "Lógica Fuzzy aplicada ao controle de nível de reservatório de abastecimento de água". *Anais do XV Simpósio Brasileiro de Automação Inteligente*, 15. <https://www.sba.org.br/open_journal_systems/index.php/sbai/article/view/2690>
 
 5. Carvalho, M.M. et al. (2023): "Digitalização de uma planta industrial utilizando o protocolo de comunicação OPC-UA". *Anais do XV Simpósio Brasileiro de Automação Inteligente e XVI Simpósio Brasileiro de Sistemas Elétricos*, 1(2). <https://www.sba.org.br/open_journal_systems/index.php/sbai/article/view/4056>
 
 6. Petrocchi, G.S. (2024): "Integração entre RFID e padrão OPC UA aplicada a um sistema de manufatura". Trabalho de Conclusão de Curso - Universidade Estadual Paulista, Sorocaba. <https://repositorio.unesp.br/entities/publication/064f9555-efbe-4d75-8703-11dac163ffdf>
 
-7. Silva, M.R.G. (2023): "Instrumentação de uma planta de manufatura flexível utilizando padrão OPC-UA embarcado". Trabalho de Conclusão de Curso - Universidade Federal de Campina Grande. <https://dspace.sti.ufcg.edu.br/xmlui/handle/riufcg/30242>
+7. Silva, M.R.G. (2023): "Instrumentação de uma planta de manufatura flexível utilizando padrão OPC-UA embarcado". Trabalho de Conclusão de Curso - Universidade Federal de Campina Grande. <https://dspace.sti.ufcg.edu.br/bitstream/riufcg/30242/1/MAYRA%20RAFAELLA%20GALVINCIO%20SILVA%20-%20TCC%20ENG.%20EL%c3%89TRICA%20CEEI%202023.pdf>
 
 8. Souza, L.V.F. (2024): "Um estudo de caso sobre controle e supervisão de um processo utilizando o padrão OPC". Trabalho de Conclusão de Curso - Instituto Federal do Espírito Santo. <https://repositorio.ifes.edu.br/handle/123456789/5447>
 

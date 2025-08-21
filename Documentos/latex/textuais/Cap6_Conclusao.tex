@@ -1,0 +1,46 @@
+\chapter{Conclusões e Trabalhos Futuros}
+\label{cap:conclusao}
+
+O presente trabalho desenvolveu e validou experimentalmente uma arquitetura distribuída para controle de nível baseada em lógica Fuzzy utilizando o protocolo OPC UA, demonstrando a viabilidade técnica e as vantagens operacionais da integração entre algoritmos de controle inteligente e tecnologias de comunicação industrial modernas. A pesquisa contribui significativamente para o avanço das aplicações de Indústria 4.0, fornecendo fundamentos sólidos para implementação de sistemas de controle distribuído em ambientes industriais heterogêneos.
+
+\section{Principais Contribuições}
+\label{contribuicoes}
+
+A principal contribuição técnica deste trabalho reside na demonstração prática da superioridade da arquitetura distribuída comparada à implementação nativa tradicional. Os resultados experimentais evidenciaram melhorias consistentes de desempenho, com redução média de 30\% no erro quadrático médio para operações de enchimento e 35\% para operações de esvaziamento, acompanhadas de melhorias significativas nos tempos de acomodação em diversas faixas operacionais.
+
+A implementação da API REST em Python utilizando a biblioteca scikit-fuzzy demonstrou maior fidelidade na aplicação das regras de inferência Fuzzy comparada ao controlador nativo do Matlab, resultando em precisão superior e comportamento mais estável. Esta descoberta sugere que implementações de código aberto podem proporcionar vantagens técnicas sobre ferramentas comerciais estabelecidas, especialmente em aplicações que requerem flexibilidade e personalização avançada.
+
+A análise de robustez com distúrbios de latência estabeleceu parâmetros operacionais fundamentais para aplicações industriais, identificando 250ms como limite máximo aceitável para operação estável com benefícios de desempenho, e 350ms como limite crítico onde instabilidades transitórias comprometem a viabilidade operacional. Paradoxalmente, a introdução controlada de latência até 250ms pode melhorar o desempenho do sistema, adicionando características de controle derivativo benéficas.
+
+A arquitetura de integração via OPC UA demonstrou eficácia na comunicação entre componentes heterogêneos, validando a aplicabilidade do protocolo para sistemas de controle distribuído moderno. A separação clara entre lógica de controle, interface humano-máquina e planta de processo facilita manutenção, permite atualizações independentes e proporciona flexibilidade arquitetural essencial para implementações industriais complexas.
+
+\section{Limitações e Restrições}
+\label{limitacoes}
+
+Apesar dos resultados positivos, algumas limitações devem ser consideradas para contextualização adequada dos achados. O ambiente de simulação utilizado, embora baseado em modelo validado do MathWorks, não incorpora todas as complexidades e perturbações inerentes a sistemas industriais reais, como variações de temperatura, viscosidade do fluido, incrustações em tubulações e desgaste de componentes físicos.
+
+A avaliação de robustez concentrou-se exclusivamente em distúrbios de latência de comunicação, não abordando outros fatores relevantes como perda de pacotes, jitter de rede, falhas intermitentes de comunicação ou variações na disponibilidade de largura de banda. Estes aspectos são fundamentais para validação completa em ambientes industriais onde múltiplos sistemas compartilham recursos de rede.
+
+As métricas de desempenho utilizadas (MSE, sobressinal e tempo de acomodação) proporcionam avaliação adequada para sistemas de controle acadêmico, porém aplicações industriais reais podem requerer métricas adicionais como consumo energético, desgaste de atuadores, estabilidade de longo prazo e capacidade de rejeição a distúrbios externos não controlados.
+
+A implementação do controlador Fuzzy baseou-se em parâmetros extraídos do exemplo de referência do MathWorks, não explorando otimização específica dos conjuntos difusos, regras de inferência ou métodos de defuzzificação para as características particulares da arquitetura distribuída implementada.
+
+\section{Trabalhos Futuros}
+\label{trabalhosfuturos}
+
+Os resultados obtidos estabelecem fundações sólidas para diversas linhas de pesquisa que podem expandir significativamente o conhecimento na área de controle distribuído inteligente.
+
+Implementação em Ambiente Industrial Real: O próximo passo natural consiste na validação da arquitetura proposta em planta industrial física, incorporando sensores reais, atuadores pneumáticos ou hidráulicos e sistemas de supervisão comerciais. Esta implementação permitiria avaliação de aspectos práticos como calibração de instrumentação, manutenção preventiva, integração com sistemas SCADA existentes e conformidade com normas de segurança industrial.
+
+Otimização dos Parâmetros Fuzzy para Arquitetura Distribuída: Pesquisa sistemática para otimização específica dos conjuntos difusos, regras de inferência e métodos de defuzzificação considerando as características particulares da comunicação distribuída. Algoritmos evolutivos, redes neurais ou técnicas de aprendizado de máquina poderiam ser empregados para ajuste automático dos parâmetros Fuzzy baseado no desempenho observado em tempo real.
+
+Integração com Tecnologias de Indústria 4.0: Desenvolvimento de interfaces para integração com tecnologias emergentes como Digital Twin, computação em nuvem, análise de big data e inteligência artificial. Esta integração permitiria monitoramento preditivo, manutenção baseada em condição e otimização contínua do desempenho através de aprendizado automático.
+
+\section{Considerações Finais}
+\label{consideracoes}
+
+Este trabalho demonstrou que a integração entre lógica Fuzzy e protocolo OPC UA constitui abordagem promissora para desenvolvimento de sistemas de controle distribuído modernos, compatíveis com os requisitos da Indústria 4.0. A arquitetura proposta oferece vantagens significativas em termos de flexibilidade, manutenibilidade e desempenho, estabelecendo fundamentos sólidos para implementações industriais práticas.
+
+Os resultados experimentais confirmam a hipótese de que sistemas de controle distribuído podem superar implementações centralizadas tradicionais, proporcionando maior precisão, melhor resposta dinâmica e robustez adequada para aplicações industriais. A descoberta de que latência controlada pode beneficiar o desempenho do sistema abre perspectivas interessantes para projeto otimizado de redes de comunicação industrial.
+
+O sucesso da arquitetura proposta valida a viabilidade de abordagens de código aberto para desenvolvimento de sistemas de controle industrial, demonstrando que alternativas flexíveis e econômicas podem competir eficazmente com soluções proprietárias estabelecidas, ao mesmo tempo em que proporcionam maior liberdade para customização e evolução contínua.
